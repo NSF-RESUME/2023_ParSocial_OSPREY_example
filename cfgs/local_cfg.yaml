@@ -1,0 +1,23 @@
+# Could do this with a list of named pools
+# pools:
+# - name: "local"
+#   cfg: ...
+# - name: "bebop"
+#   cfg: ...
+
+start_pool_script: /home/nick/Documents/repos/async_repro_ex/swift/local_worker_pool.sh
+pool_cfg: /home/nick/Documents/repos/async_repro_ex/swift/local.cfg
+pool_task_type: 0
+
+db_host: 'localhost'
+db_user: 'eqsql_test_user'
+db_port: 5433
+db_name: 'eqsql_test_db'
+
+search_space_size: 10
+sample_dimensions: 4
+exp_id: async_repro
+runtime: 1
+runtime_var: 2
+num_guesses: 10
+retrain_after: 4

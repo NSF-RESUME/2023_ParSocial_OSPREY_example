@@ -59,7 +59,7 @@ export DB_NAME=$CFG_DB_NAME
 # PYTHONPATH+="$EMEWS_PROJECT_ROOT/python"
 # export PYTHONPATH
 # echo "PYTHONPATH: $PYTHONPATH"
-EQ_SQL=$( readlink --canonicalize $EMEWS_PROJECT_ROOT/../EQ-SQL )
+EQ_SQL=$( readlink --canonicalize $EMEWS_PROJECT_ROOT/../../EQ-SQL )
 export PYTHONPATH=$EQ_SQL/db:$EQ_SQL/python:$EMEWS_PROJECT_ROOT/python:$EMEWS_PROJECT_ROOT/swift/ext
 echo "PYTHONPATH: $PYTHONPATH"
 
@@ -97,6 +97,8 @@ USER_VARS=("MODEL_DIR" "STOP_AT" "MODEL_PROPS" \
 
 # echo's anything following this standard out
 # set -x
+
+export PATH=$HOME/sfw/swift-t-11072022/stc/bin:$PATH
 
 swift-t -n $PROCS $MACHINE -p \
     -I $EMEWS_EXT \

@@ -1,8 +1,6 @@
 import argparse
 import yaml
-from typing import Dict, List, Union
-import subprocess
-import threading
+from typing import Dict, List
 import numpy as np
 import json
 import time
@@ -13,6 +11,7 @@ from sklearn.pipeline import Pipeline
 import scipy
 
 from eqsql import eq
+import launch
 
 
 def reprioritize_queue(training_data: List[List],
@@ -67,21 +66,7 @@ def reprioritize(database: Dict[int, List]):
         priorities.append(priority)
 
     eq.update_priority(fts, priorities)
-
-
-def launch_worker_pools(params: Dict):
-    # TODO: remote pools
-    # launch local pool
-    try:
-        subprocess.run(['bash', params['start_pool_script'], "1", params['pool_cfg']], check=True)
-    except subprocess.CalledProcessError as e:
-            print(e, flush=True)
-
-def start_db(params: Dict):
-    # TODO: remove DB
-    # local DB - no need to start
-    pass
-
+    
 
 def submit_initial_tasks(task_eq: eq.EQSQL, params: Dict):
     search_space_size = params['search_space_size']
@@ -89,58 +74,90 @@ def submit_initial_tasks(task_eq: eq.EQSQL, params: Dict):
     sampled_space = np.random.uniform(size=(search_space_size, dim), low=-32.768, high=32.768)
     
     exp_id = params['exp_id']
-    task_type = params['pool_task_type']
+    task_type = params['task_types']['sim']
     mean_rt = params['runtime']
     std_rt = params['runtime_var']
     database = {}
+    print("SUBMITTING", flush=True)
     for sample in sampled_space:
         payload = json.dumps({'x': list(sample), 'mean_rt': mean_rt, 'std_rt': std_rt})
         _, ft = task_eq.submit_task(exp_id, task_type, payload)
         database[ft.eq_task_id] = [ft, sample, None]
 
+    print("SUBMITTED", flush=False)
+
     return database
 
 
-def run(params: Dict):
-    start_db(params)
-    task_eq = eq.init_eqsql(params['db_host'], params['db_user'], params['db_port'], 
-                            params['db_name'])
+def start_dbs(params: Dict):
+    task_eqs = {}
+    launch.launch_dbs(params)
+    for db in params['dbs']:
+        name = db['name']
+        if 'tunnel' in db:
+            port = db['tunnel']['port'] 
+            # port = 11219
+            host = 'localhost'
+        else:
+            port = db['db_port']
+            host = db['db_host']
 
-    if not task_eq.are_queues_empty():
-        print("Queues are not empty. Exiting ...")
-        task_eq.close()
+        print(port)
+        task_eq = eq.init_eqsql(host, db['db_user'], port, db['db_name'])
+        task_eqs[name] = task_eq
+
+        if not task_eq.are_queues_empty():
+            print(f"{name} DB queues are not empty. Exiting ...")
+            for task_eq in task_eqs.values():
+                task_eq.close()
+            return
+    
+    return task_eqs
+
+
+def run(exp_id, params: Dict):
+    task_eqs = start_dbs(params)
+    if task_eqs is None:
+        launch.stop_dbs(params)
         return
-
-    # use thread locally so call returns
-    t = threading.Thread(target=launch_worker_pools, args=(params,))
-    t.start()
-
+    
+    # only one db currently so get the associated task_eq
+    task_eq = list(task_eqs.values())[0]
+    
     try:
         database = submit_initial_tasks(task_eq, params)
+        # launch after submitting so pool has full data
+        pool_data = launch.launch_worker_pools(exp_id, params)
         num_guesses = params['num_guesses']
         retrain_after = params['retrain_after']
+        next_retrain = retrain_after
         tasks_completed = 0
         fts = [v[0] for _, v in database.items()]
+        print(f'NUM GUESSES: {num_guesses}')
+        print(f'RETRAIN AFTER: {retrain_after}')
+        print(f'FTS: {len(fts)}')
         while tasks_completed < num_guesses:
             ft = eq.pop_completed(fts)
             _, result = ft.result()
             database[ft.eq_task_id][2] = float(result)
             tasks_completed += 1
+            print(f"tasks completed: {tasks_completed}")
 
-            if tasks_completed == retrain_after:
+            if tasks_completed == next_retrain:
                 reprioritize(database)
-                retrain_after += tasks_completed
+                next_retrain += retrain_after
                 print(f'New retrain after: {retrain_after}')
 
     finally:
-        task_eq.stop_worker_pool(params['pool_task_type'])
-        task_eq.close()
-
-    t.join()
+        for task_eq in task_eqs.values():
+            task_eq.close()
+        launch.stop_worker_pools(pool_data)
+        launch.stop_dbs(params)
 
 
 def create_parser():
     parser = argparse.ArgumentParser()
+    parser.add_argument('exp_id', help='experiment id')
     parser.add_argument('config_file', help="yaml format configuration file")
     return parser
 
@@ -150,6 +167,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
     with open(args.config_file) as fin:
         params = yaml.safe_load(fin)
+
+    # launch.launch_dbs(params)
+    # launch.launch_worker_pools(args.exp_id, params)
+    # launch.stop_dbs(params)
     
-    run(params)
+    run(args.exp_id, params)
 

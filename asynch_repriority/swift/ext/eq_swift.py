@@ -68,22 +68,26 @@ def query_tasks_n(batch_size: int, threshold: int, work_type: int, retry_thresho
 
         n_tasks = len(tasks)
         # print("TASKS: ", tasks, flush=True)
-        if n_tasks > 0:
-            wait = 0.25
-            if tasks[-1]['type'] == 'status':
-                # Intention is that the stop / abort task
-                # is pushed by itself.
-                if n_tasks > 1:
-                    q.put(tasks[:-1])
-                    q.put([tasks[-1]])
+        try:
+            if n_tasks > 0:
+                wait = 0.25
+                if tasks[-1]['type'] == 'status':
+                    # Intention is that the stop / abort task
+                    # is pushed by itself.
+                    if n_tasks > 1:
+                        q.put(tasks[:-1])
+                        q.put([tasks[-1]])
+                    else:
+                        q.put([tasks[0]])
                 else:
-                    q.put([tasks[0]])
+                    q.put(tasks)
             else:
-                q.put(tasks)
-        else:
-            time.sleep(wait)
-            if wait < 20:
-                wait += 0.25
+                time.sleep(wait)
+                if wait < 20:
+                    wait += 0.25
+        except: 
+            q.put({'type': 'FAILED', 'payload': traceback.format_exc()})
+            break
 
 
 def init_task_querier(batch_size: int, threshold: int, work_type: int, retry_threshold: int = 0):
@@ -98,6 +102,11 @@ def get_tasks_n(msg_delimiter: str = '|', list_delimiter: str = ';'):
     msg_maps = _q.get(True)
     msgs = []
     for msg_map in msg_maps:
+        # deal with exception in query_task_n thread
+        if msg_map['type'] == 'FAILED':
+            print(msg_map['payload'])
+            raise ValueError("Error in querying tasks")
+
         items = [msg_map['type'], msg_map['payload']]
         if msg_map['type'] == 'work':
             items.append(str(msg_map['eq_task_id']))

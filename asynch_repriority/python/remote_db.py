@@ -17,6 +17,7 @@ def get_eqsql():
 
     return eq.init_eqsql(host, user, port, db_name)
 
+
 @app.post('/completed')
 def completed_task():
     eqsql = get_eqsql()
@@ -45,6 +46,7 @@ def update_priorities():
     eqsql.close()
     return list(result)
 
+
 @app.post('/submit_tasks')
 def submit_task():
     # print("JSON:", request.json)
@@ -62,3 +64,8 @@ def submit_task():
     print(len(task_ids), flush=True)
 
     return task_ids
+
+
+def start(host, port):
+    global app
+    app.run(host=host, port=port)

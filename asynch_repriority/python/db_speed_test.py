@@ -1,28 +1,58 @@
 import numpy as np
 import json
 from datetime import datetime
-import requests
+import funcx
 import json
+import asynch_repriority.python.queues as queues
+import sys
+import time
 
 from eqsql import eq
+import asynch_repriority.python.lifecycle as lifecycle
 
 def run():
-    search_space_size = 250
+    search_space_size = 1000
     dim = 4
     sampled_space = np.random.uniform(size=(search_space_size, dim), low=-32.768, high=32.768)
-    start = datetime.now()
-    msg = {'exp_id': 'test_1', 'task_type': 0}
     payloads = []
-    msg['payloads'] = payloads
     for sample in sampled_space:
         payload = json.dumps({'x': list(sample), 'mean_rt': 2, 'std_rt': 1})
         payloads.append(payload)
+
+    def start_flask():
+        import sys
+        sys.path.append('/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/python')
+        sys.path.append('/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python')
+        import remote_db
+        return remote_db.start('127.0.0.1', 11218)
+       
+    tunnel = lifecycle.start_tunnel('127.0.0.1', 11218, 11219, 'Bebop', '/home/nick/.ssh/config')
+
+    bebop_ep = 'd526418b-8920-4bc9-a9a0-3c97e1a10d3b'
+    # with funcx.FuncXExecutor(endpoint_id=bebop_ep) as fx:
+    fx = funcx.FuncXExecutor(endpoint_id=bebop_ep)
+    ft = fx.submit(start_flask)
+
+    api_host = "http://127.0.0.1:11219"
+    for i in range(20):
+        try:
+            queues.ping(api_host)
+            print("PING!")
+        except:
+            print("NONTHING")
+            time.sleep(1)
     
-    api_url = "http://127.0.0.1:5000/submit_task"
-    response = requests.post(api_url, json=json.dumps(msg))
-    print(response.json())
-    end = datetime.now()
-    print(end - start)
+    start = datetime.now()
+    # fts = remote.submit_remote_tasks(api_host, 'test_1', 0, payloads, 0)
+    # # print(fts)
+    # print(fts[0].eq_task_id)
+    # end = datetime.now()
+    # print(end - start)
+
+    queues.remote_shutdown(api_host)
+    print(ft.result())
+    fx.shutdown()
+    tunnel.close()
 
 
     # task_eq = eq.init_eqsql('localhost', 'eqsql_test_user', 5433, 'eqsql_test_db')

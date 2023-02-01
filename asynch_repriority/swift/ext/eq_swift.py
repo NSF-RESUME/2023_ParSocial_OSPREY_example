@@ -67,7 +67,6 @@ def query_tasks_n(batch_size: int, threshold: int, work_type: int, retry_thresho
             eq_sql.close()
 
         n_tasks = len(tasks)
-        # print("TASKS: ", tasks, flush=True)
         try:
             if n_tasks > 0:
                 wait = 0.25

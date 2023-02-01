@@ -3,12 +3,12 @@ import yaml
 from typing import Dict, List
 import numpy as np
 import json
-import time
 
 from sklearn.gaussian_process import GaussianProcessRegressor, kernels
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.pipeline import Pipeline
-import scipy
+
+from proxystore.store import get_store
 
 import lifecycle
 
@@ -27,6 +27,11 @@ def reprioritize_queue(training_data: List[List],
     Returns:
         Re-ordered priorities of queue
     """
+    # can be called via funcx so imports
+    import time
+    import numpy as np
+    import scipy
+
     time.sleep(opt_delay)
 
     # Update the GPR with the available training data
@@ -44,14 +49,22 @@ def reprioritize_queue(training_data: List[List],
     return np.argsort(-1 * ei)
 
 
-def reprioritize(conn, database: Dict[int, List]):
+def reprioritize_fx(fx, completed, pred_data, gpr):
+    store = get_store('globus')
+    gpr_proxy = store.proxy(gpr)
+    ft = fx.submit(reprioritize_queue, completed, pred_data, gpr_proxy)
+    return ft.result()
+
+
+def reprioritize(task_queue, fx, database: Dict[int, List]):
     completed = [x[1:] for x in filter(lambda x: x[2] is not None, database.values())]
     uncompleted = [x[:2] for x in filter(lambda x: x[2] is None, database.values())]
     gpr = Pipeline([('scale', MinMaxScaler(feature_range=(-1, 1))),
                     ('gpr', GaussianProcessRegressor(normalize_y=True, kernel=kernels.RBF() * kernels.ConstantKernel()))
                     ])
     # x[1] is input array
-    new_order = reprioritize_queue(completed, [x[1] for x in uncompleted], gpr=gpr)
+    # new_order = reprioritize_queue(completed, [x[1] for x in uncompleted], gpr=gpr)
+    new_order = reprioritize_fx(fx, completed, [x[1] for x in uncompleted], gpr=gpr)
     fts = []
     priorities = []
     max_priority = len(uncompleted)
@@ -61,7 +74,7 @@ def reprioritize(conn, database: Dict[int, List]):
         fts.append(ft)
         priorities.append(priority)
 
-    conn.update_priorities(fts, priorities)
+    task_queue.update_priorities(fts, priorities)
 
 
 def submit_initial_tasks(task_queue, exp_id, params: Dict):
@@ -91,6 +104,8 @@ def run(exp_id, params: Dict):
     task_queues = pools = dbs = fx_executors = {}
     try:
         fx_endpoints, db_names, pool_names = lifecycle.find_active_elements(params)
+        if 'condo' not in fx_endpoints:
+            fx_endpoints.append('condo')
         fx_executors = lifecycle.initialize_fx_endpoints(fx_endpoints, params)
         dbs = lifecycle.initialize_dbs(db_names, fx_executors, params)
         task_queues = lifecycle.initialize_task_queues(fx_executors, dbs, params)
@@ -99,6 +114,8 @@ def run(exp_id, params: Dict):
         # launch after submitting so pool has full data
         pools = lifecycle.initialize_worker_pools(exp_id, pool_names, fx_executors,
                                                   dbs, params)
+        lifecycle.initialize_proxystore(params)
+
         num_guesses = params['num_guesses']
         retrain_after = params['retrain_after']
         # next_retrain = retrain_after
@@ -115,7 +132,7 @@ def run(exp_id, params: Dict):
                 tasks_completed += 1
 
             print(f"tasks completed: {tasks_completed}")
-            reprioritize(task_queue, database)
+            reprioritize(task_queue, fx_executors['condo'], database)
 
     finally:
         for task_queue in task_queues.values():

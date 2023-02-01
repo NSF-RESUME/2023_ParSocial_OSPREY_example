@@ -12,6 +12,10 @@ import task_queues
 from typing import Dict
 from datetime import datetime
 
+from proxystore.store import register_store
+from proxystore.store.globus import GlobusEndpoints
+from proxystore.store.globus import GlobusStore
+
 
 class ForwardServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
@@ -424,3 +428,10 @@ def initialize_task_queues(fx_executors, dbs, params):
         taskqs[task_queue_name] = task_queue
 
     return taskqs
+
+
+def initialize_proxystore(params: Dict):
+    globus_config = params['proxystore']['globus_config']
+    endpoints = GlobusEndpoints.from_dict(globus_config)
+    store = GlobusStore('globus', endpoints=endpoints)
+    register_store(store)

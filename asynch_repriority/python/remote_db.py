@@ -24,7 +24,7 @@ db_name = None
 @app.post('/init')
 def flsk_init():
     msg = json.loads(request.json)
-    print(msg)
+    # print(msg)
     init_db_params(msg['db_host'], msg['db_port'], msg['db_user'], msg['db_name'])
     return "initialized"
 
@@ -40,20 +40,25 @@ def init_db_params(host, port, user, name):
 @app.post('/completed')
 def flsk_completed_task():
     msg = json.loads(request.json)
-    return completed_task(msg['task_ids'])
+    return completed_task(msg['task_ids'], msg['n'])
 
 
-def completed_task(task_ids):
+def completed_task(task_ids, n):
     eqsql = eq.init_eqsql(db_host, db_user, db_port, db_name)
     fts = [eq.Future(eqsql, task_id) for task_id in task_ids]
-    result = None
-    while result is None:
-        for ft in fts:
-            status, result_str = ft.result(timeout=0.0)
-            # TODO: check for ABORT
-            if status == eq.ResultStatus.SUCCESS:
-                result = [ft.eq_task_id, [status, result_str]]
-                break
+    if n == 1:
+        result = [eq.pop_completed(fts).eq_task_id]
+    else:
+        result = [(ft.eq_task_id, ft.result()) for ft in eq.as_completed(fts, pop=True, n=n)]
+
+    # result = None
+    # while result is None:
+    #     for ft in fts:
+    #         status, result_str = ft.result(timeout=0.0)
+    #         # TODO: check for ABORT
+    #         if status == eq.ResultStatus.SUCCESS:
+    #             result = [ft.eq_task_id, [status, result_str]]
+    #             break
 
     eqsql.close()
     return result

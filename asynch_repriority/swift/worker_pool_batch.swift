@@ -27,12 +27,12 @@ string WORKER_POOL_ID = argv("worker_pool_id", "default");
 string ackley_code = """
 import datetime
 task_id = %d
-print(f'START: {task_id} {datetime.datetime.now(tz=datetime.timezone.utc).timestamp()}')
+print(f'TASK START: {task_id} {datetime.datetime.now(tz=datetime.timezone.utc).timestamp()}', flush=True)
 import ackley
 
 payload = '%s'
 result = ackley.run(payload)
-print(f'END: {task_id} {datetime.datetime.now(tz=datetime.timezone.utc).timestamp()}')
+print(f'TASK END: {task_id} {datetime.datetime.now(tz=datetime.timezone.utc).timestamp()}', flush=True)
 """;
 
 

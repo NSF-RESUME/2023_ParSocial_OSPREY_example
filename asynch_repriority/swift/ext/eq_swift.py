@@ -8,6 +8,8 @@ import os
 
 from eqsql import eq
 
+ABORT_MSG = {'type': 'status', 'payload': eq.EQ_ABORT}
+
 
 def _create_eqsql(retry_threshold: int = 0, log_level=logging.WARN):
     host = os.getenv('DB_HOST')
@@ -32,9 +34,12 @@ def query_task(eq_work_type: int, worker_pool: str, query_timeout: float = 120.0
         eq_sql.logger.debug('swift out_get done')
         return '|'.join(items)
     except Exception:
-        eq_sql.logger.error(f'eq_swift.query_task error {traceback.format_exc()}')
+        if eq_sql is None:
+            print(f'eq_swift.query_task error {traceback.format_exc()}', flush=True)
+        else:
+            eq_sql.logger.error(f'eq_swift.query_task error {traceback.format_exc()}')
         # result_str returned via swift's python persist
-        return eq.ABORT_JSON_MSG
+        return ABORT_MSG
     finally:
         if eq_sql is not None:
             eq_sql.close()
@@ -48,7 +53,10 @@ def report_task(eq_task_id: int, eq_work_type: int, result_payload: str,
         # TODO this returns a ResultStatus, add FAILURE handling
         eq_sql.report_task(eq_task_id, eq_work_type, result_payload)
     except Exception:
-        eq_sql.logger.error(f'eq_swift.report_task error {traceback.format_exc()}')
+        if eq_sql is None:
+            print(f'eq_swift.report_task error {traceback.format_exc()}', flush=True)
+        else:
+            eq_sql.logger.error(f'eq_swift.report_task error {traceback.format_exc()}')
     finally:
         if eq_sql is not None:
             eq_sql.close()
@@ -70,8 +78,11 @@ def query_tasks_n(batch_size: int, threshold: int, work_type: int, worker_pool: 
                                                               batch_size=batch_size, threshold=threshold,
                                                               worker_pool=worker_pool, timeout=10)
         except Exception:
-            eq_sql.logger.error(f'eq_swift.query_task_n error {traceback.format_exc()}')
-            q.put([eq.ABORT_JSON_MSG])
+            if eq_sql is None:
+                print(f'eq_swift.query_task_n error {traceback.format_exc()}', flush=True)
+            else:
+                eq_sql.logger.error(f'eq_swift.query_task_n error {traceback.format_exc()}')
+            q.put([ABORT_MSG])
             break
         finally:
             if eq_sql is not None:

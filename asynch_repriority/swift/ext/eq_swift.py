@@ -19,8 +19,9 @@ def _create_eqsql(retry_threshold: int = 0, log_level=logging.WARN):
 
 def query_task(eq_work_type: int, worker_pool: str, query_timeout: float = 120.0,
                retry_threshold: int = 0, log_level=logging.WARN):
-    eq_sql = _create_eqsql(retry_threshold, log_level)
+    eq_sql = None
     try:
+        eq_sql = _create_eqsql(retry_threshold, log_level)
         eq_sql.logger.debug('swift out_get')
         # result is a msg map
         msg_map = eq_sql.query_task(eq_work_type, worker_pool=worker_pool, timeout=query_timeout)
@@ -35,13 +36,15 @@ def query_task(eq_work_type: int, worker_pool: str, query_timeout: float = 120.0
         # result_str returned via swift's python persist
         return eq.ABORT_JSON_MSG
     finally:
-        eq_sql.close()
+        if eq_sql is not None:
+            eq_sql.close()
 
 
 def report_task(eq_task_id: int, eq_work_type: int, result_payload: str,
                 retry_threshold: int = 0, log_level=logging.WARN):
-    eq_sql = _create_eqsql(retry_threshold, log_level)
+    
     try:
+        eq_sql = _create_eqsql(retry_threshold, log_level)
         # TODO this returns a ResultStatus, add FAILURE handling
         eq_sql.report_task(eq_task_id, eq_work_type, result_payload)
     except Exception:
@@ -59,13 +62,18 @@ def query_tasks_n(batch_size: int, threshold: int, work_type: int, worker_pool: 
     running_task_ids = []
     wait = 0.25
     while _go:
-        eq_sql = _create_eqsql(retry_threshold)
+        eq_sql = None
         try:
+            eq_sql = _create_eqsql(retry_threshold)
             running_task_ids, tasks = eq_sql.query_more_tasks(work_type, running_task_ids,
                                                               batch_size=batch_size, threshold=threshold,
                                                               worker_pool=worker_pool, timeout=10)
+        except Exception:
+            eq_sql.logger.error(f'eq_swift.query_task_n error {traceback.format_exc()}')
+            q.put([eq.ABORT_JSON_MSG])
         finally:
-            eq_sql.close()
+            if eq_sql is not None:
+                eq_sql.close()
 
         n_tasks = len(tasks)
         # print("TASKS: ", tasks, flush=True)

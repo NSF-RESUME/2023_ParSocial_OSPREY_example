@@ -25,11 +25,14 @@ string WORKER_POOL_ID = argv("worker_pool_id", "default");
 // * EQ_DB_RETRY_THRESHOLD sets the db connection retry threshold for querying and reporting
 
 string ackley_code = """
-
+import datetime
+task_id = %d
+print(f'START: {task_id} {datetime.datetime.now()})
 import ackley
 
 payload = '%s'
 result = ackley.run(payload)
+print(f'END: {task_id} {datetime.datetime.now()})
 """;
 
 

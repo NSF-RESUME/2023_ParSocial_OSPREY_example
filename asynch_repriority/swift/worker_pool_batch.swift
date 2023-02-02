@@ -27,24 +27,24 @@ string WORKER_POOL_ID = argv("worker_pool_id", "default");
 string ackley_code = """
 import datetime
 task_id = %d
-print(f'START: {task_id} {datetime.datetime.now()})
+print(f'START: {task_id} {datetime.datetime.now(tz=datetime.timezone.utc).timestamp()})
 import ackley
 
 payload = '%s'
 result = ackley.run(payload)
-print(f'END: {task_id} {datetime.datetime.now()})
+print(f'END: {task_id} {datetime.datetime.now(tz=datetime.timezone.utc).timestamp()})
 """;
 
 
-(string result) run_task(string payload) {
-  string code = ackley_code % payload;
+(string result) run_task(int task_id, string payload) {
+  string code = ackley_code % (task_id, payload);
   result = python_persist(code, "result");
 }
 
 run(message msgs[]) {
   // printf("MSGS SIZE: %d", size(msgs));
   foreach msg, i in msgs {
-    result_payload = run_task(msg.payload);
+    result_payload = run_task(msg.eq_task_id, msg.payload);
     eq_task_report(msg.eq_task_id, WORK_TYPE, result_payload);
   }
 }

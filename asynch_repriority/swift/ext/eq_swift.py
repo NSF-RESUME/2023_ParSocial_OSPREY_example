@@ -17,13 +17,13 @@ def _create_eqsql(retry_threshold: int = 0, log_level=logging.WARN):
     return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
 
 
-def query_task(eq_work_type: int, query_timeout: float = 120.0,
+def query_task(eq_work_type: int, worker_pool: str, query_timeout: float = 120.0,
                retry_threshold: int = 0, log_level=logging.WARN):
     eq_sql = _create_eqsql(retry_threshold, log_level)
     try:
         eq_sql.logger.debug('swift out_get')
         # result is a msg map
-        msg_map = eq_sql.query_task(eq_work_type, timeout=query_timeout)
+        msg_map = eq_sql.query_task(eq_work_type, worker_pool=worker_pool, timeout=query_timeout)
         items = [msg_map['type'], msg_map['payload']]
         if msg_map['type'] == 'work':
             items.append(str(msg_map['eq_task_id']))
@@ -54,7 +54,8 @@ _q = mp.Queue(1)
 _go = True
 
 
-def query_tasks_n(batch_size: int, threshold: int, work_type: int, retry_threshold: int, q: mp.Queue):
+def query_tasks_n(batch_size: int, threshold: int, work_type: int, worker_pool: str,
+                  retry_threshold: int, q: mp.Queue):
     running_task_ids = []
     wait = 0.25
     while _go:
@@ -62,38 +63,34 @@ def query_tasks_n(batch_size: int, threshold: int, work_type: int, retry_thresho
         try:
             running_task_ids, tasks = eq_sql.query_more_tasks(work_type, running_task_ids,
                                                               batch_size=batch_size, threshold=threshold,
-                                                              timeout=10)
+                                                              worker_pool=worker_pool, timeout=10)
         finally:
             eq_sql.close()
 
         n_tasks = len(tasks)
         # print("TASKS: ", tasks, flush=True)
-        try:
-            if n_tasks > 0:
-                wait = 0.25
-                if tasks[-1]['type'] == 'status':
-                    # Intention is that the stop / abort task
-                    # is pushed by itself.
-                    if n_tasks > 1:
-                        q.put(tasks[:-1])
-                        q.put([tasks[-1]])
-                    else:
-                        q.put([tasks[0]])
+        if n_tasks > 0:
+            wait = 0.25
+            if tasks[-1]['type'] == 'status':
+                # Intention is that the stop / abort task
+                # is pushed by itself.
+                if n_tasks > 1:
+                    q.put(tasks[:-1])
+                    q.put([tasks[-1]])
                 else:
-                    q.put(tasks)
+                    q.put([tasks[0]])
             else:
-                time.sleep(wait)
-                if wait < 20:
-                    wait += 0.25
-        except: 
-            q.put({'type': 'FAILED', 'payload': traceback.format_exc()})
-            break
+                q.put(tasks)
+        else:
+            time.sleep(wait)
+            if wait < 20:
+                wait += 0.25
 
 
-def init_task_querier(batch_size: int, threshold: int, work_type: int, retry_threshold: int = 0):
+def init_task_querier(worker_pool: str, batch_size: int, threshold: int, work_type: int, retry_threshold: int = 0):
     # wait_info = WaitInfo
     t = threading.Thread(target=query_tasks_n, args=(batch_size, threshold, work_type,
-                         retry_threshold, _q))
+                         worker_pool, retry_threshold, _q))
     t.start()
 
 
@@ -102,11 +99,6 @@ def get_tasks_n(msg_delimiter: str = '|', list_delimiter: str = ';'):
     msg_maps = _q.get(True)
     msgs = []
     for msg_map in msg_maps:
-        # deal with exception in query_task_n thread
-        if msg_map['type'] == 'FAILED':
-            print(msg_map['payload'])
-            raise ValueError("Error in querying tasks")
-
         items = [msg_map['type'], msg_map['payload']]
         if msg_map['type'] == 'work':
             items.append(str(msg_map['eq_task_id']))

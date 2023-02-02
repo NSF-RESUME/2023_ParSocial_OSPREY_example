@@ -1,34 +1,112 @@
-# Could do this with a list of named pools
-# pools:
-# - name: "local"
-#   cfg: ...
-# - name: "bebop"
-#   cfg: ...
+# task_queues:
+#   sim:
+#     db: bebop
+#     type: queue_server
+#     fx_endpoint: bebop
+#     host: 127.0.0.1
+#     port: 11218
+#     tunnel:
+#       config_key: Bebop
+#       # ssh_config: /home/nick/.ssh/config
+#       ssh_config: /Users/nick/.ssh/config
+#       port: 11219
+
+# task_queues:
+#   sim:
+#     db: bebop
+#     type: funcx
+#     fx_endpoint: bebop
+
+
+# tasks:
+#   - type: 0
+#     pools: 
+#       - bebop1
+#       # - bebop2
+#     db: bebop
+
+task_queues:
+  # Run with py3.10!!!
+  sim:
+    db: nc_local
+    type: local
+
+tasks:
+  - type: 0
+    pools: 
+      - nc_local
+    db: nc_local
+
+proxystore:
+   globus_config:
+        # bebop
+        61f9954c-a4fa-11ea-8f07-0a21f750d19b:
+          # host_regex: beboplogin[1-5]
+          host_regex: dis-[0-9]{1,4}
+          endpoint_path: ~/proxy-store
+          local_path: ~/proxy-store
+        # nc GCP
+        957f111a-a242-11ed-a2a4-8383522b48d9:
+          host_regex: MacBook-Pro\.local
+          endpoint_path: ~/proxy-store
+          local_path: ~/proxy-store
+
+
+## ME Parameters ##
+
+search_space_size: 100
+sample_dimensions: 4
+runtime: 1
+runtime_var: 1
+num_guesses: 50
+retrain_after: 10
+
+## FX Endpoints, Pool and DB definitions ##
+
+fx_endpoints:
+  bebop: d526418b-8920-4bc9-a9a0-3c97e1a10d3b
+  condo: 3e2ee533-db51-45be-ae9f-7bc7e6ee3dc5
 
 pools:
-  - name: nc_local
+  nc_local:
     type: local
     start_pool_script: /home/nick/Documents/repos/eqsql_examples/asynch_repriority/swift/local_worker_pool.sh
-    CFG_NODES: 3
+    CFG_NODES: 4
     CFG_PPN: 1
     CFG_PROCS: $(( CFG_NODES * CFG_PPN ))
-    CFG_DB_PORT: 5433
-    CFG_DB_USER: eqsql_test_user
-    CFG_DB_NAME: eqsql_test_db
-    CFG_DB_HOST: localhost
+    # CFG_DB_PORT: 5433
+    # CFG_DB_USER: eqsql_test_user
+    # CFG_DB_NAME: eqsql_test_db
+    # CFG_DB_HOST: localhost
     CFG_BATCH_SIZE: $(( CFG_PROCS - 2 ))
     CFG_BATCH_THRESHOLD: 1
 
-  - name: bebop
+  bebop1:
     type: funcx
-    fx_endpoint: 'd526418b-8920-4bc9-a9a0-3c97e1a10d3b'
+    fx_endpoint: bebop
     start_pool_script: /lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/bebop_worker_pool.sh
     CFG_PPN: 36
     CFG_NODES: 1
     CFG_PROCS: $(( CFG_NODES * CFG_PPN ))
-    CFG_DB_PORT: 3149
-    CFG_DB_USER: collier
-    CFG_DB_NAME: EQ_SQL
+    # CFG_DB_PORT: 3149
+    # CFG_DB_USER: collier
+    # CFG_DB_NAME: EQ_SQL
+    CFG_BATCH_SIZE: $(( CFG_PROCS - 2 ))
+    CFG_BATCH_THRESHOLD: 1
+    CFG_WALLTIME: 01:00:00
+    CFG_QUEUE: dis
+    CFG_PROJECT: CONDO
+
+  bebop2:
+    type: funcx
+    fx_endpoint: bebop
+    start_pool_script: /lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/bebop_worker_pool.sh
+    CFG_PPN: 36
+    CFG_NODES: 1
+    CFG_PROCS: $(( CFG_NODES * CFG_PPN ))
+    # CFG_DB_PORT: 3149
+    # CFG_DB_USER: collier
+    # CFG_DB_NAME: EQ_SQL
     CFG_BATCH_SIZE: $(( CFG_PROCS - 2 ))
     CFG_BATCH_THRESHOLD: 1
     CFG_WALLTIME: 01:00:00
@@ -36,45 +114,23 @@ pools:
     CFG_PROJECT: CONDO
 
 dbs:
-  - name: nc_local
+  nc_local:
     type: local
     db_host: localhost
     db_user: eqsql_test_user
     db_port: 5433
     db_name: eqsql_test_db
 
-  # - name: bebop
-  #   type: funcx
-  #   fx_endpoint: d526418b-8920-4bc9-a9a0-3c97e1a10d3b
-  #   db_user: collier
-  #   db_port: 3149
-  #   db_name: EQ_SQL
-  #   db_data: /lcrc/project/EMEWS/bebop/db
-  #   env:
-  #     PATH: /lcrc/project/EMEWS/bebop/sfw/gcc-7.1.0/postgres-14.2/bin
-  #     LD_LIBRARY_PATH': /lcrc/project/EMEWS/bebop/sfw/gcc-7.1.0/postgres-14.2/lib
-  #   # start_cmd: nice -n 19 pg_ctl -D ${db_data} -l ${db_data}/db.log -o "-p ${db_port}" start
-  #   start_cmd: pg_ctl -D ${db_data} -l ${db_data}/db.log -o "-p ${db_port}" start
-  #   stop_cmd: pg_ctl -D ${db_data} stop
-
-    # tunnel:
-    #   host: Bebop
-    #   ssh_config: /home/nick/.ssh/config
-      
-
-task_types:
-  sim: 0
-
-tasks:
-  - type: sim
-    pools:
-      - bebop
-
-
-search_space_size: 1000
-sample_dimensions: 4
-exp_id: async_repro
-runtime: 1
-runtime_var: 1
-num_guesses: 500
-retrain_after: 20
+  bebop:
+    type: funcx
+    fx_endpoint: bebop
+    db_user: collier
+    db_port: 3149
+    db_name: EQ_SQL
+    db_data: /lcrc/project/EMEWS/bebop/db
+    env:
+      PATH: /lcrc/project/EMEWS/bebop/sfw/gcc-7.1.0/postgres-14.2/bin
+      LD_LIBRARY_PATH': /lcrc/project/EMEWS/bebop/sfw/gcc-7.1.0/postgres-14.2/lib
+    start_cmd: nice -n 19 pg_ctl -D ${db_data} -l ${db_data}/db.log -o "-p ${db_port}" start
+    # start_cmd: pg_ctl -D ${db_data} -l ${db_data}/db.log -o "-p ${db_port}" start
+    stop_cmd: pg_ctl -D ${db_data} stop

@@ -1,6 +1,5 @@
 from flask import Flask, request
 import json
-from collections import namedtuple
 from multiprocessing import Process, Queue
 
 from eqsql import eq
@@ -35,7 +34,7 @@ def init_db_params(host, port, user, name):
     db_port = port
     db_user = user
     db_name = name
-    
+
 
 @app.post('/completed')
 def flsk_completed_task():

@@ -63,8 +63,8 @@ def reprioritize(task_queue, fx, database: Dict[int, List]):
                     ('gpr', GaussianProcessRegressor(normalize_y=True, kernel=kernels.RBF() * kernels.ConstantKernel()))
                     ])
     # x[1] is input array
-    # new_order = reprioritize_queue(completed, [x[1] for x in uncompleted], gpr=gpr)
-    new_order = reprioritize_fx(fx, completed, [x[1] for x in uncompleted], gpr=gpr)
+    new_order = reprioritize_queue(completed, [x[1] for x in uncompleted], gpr=gpr)
+    # new_order = reprioritize_fx(fx, completed, [x[1] for x in uncompleted], gpr=gpr)
     fts = []
     priorities = []
     max_priority = len(uncompleted)

@@ -1,15 +1,15 @@
-task_queues:
-  sim:
-    db: bebop
-    type: queue_server
-    fx_endpoint: bebop
-    host: 127.0.0.1
-    port: 11218
-    tunnel:
-      config_key: Bebop
-      # ssh_config: /home/nick/.ssh/config
-      ssh_config: /Users/nick/.ssh/config
-      port: 11219
+# task_queues:
+#   sim:
+#     db: bebop
+#     type: queue_server
+#     fx_endpoint: bebop
+#     host: 127.0.0.1
+#     port: 11218
+#     tunnel:
+#       config_key: Bebop
+#       # ssh_config: /home/nick/.ssh/config
+#       ssh_config: /Users/nick/.ssh/config
+#       port: 11219
 
 # task_queues:
 #   sim:
@@ -18,24 +18,24 @@ task_queues:
 #     fx_endpoint: bebop
 
 
-tasks:
-  - type: 0
-    pools: 
-      - bebop1
-      # - bebop2
-    db: bebop
-
-# task_queues:
-#   # Run with py3.10!!!
-#   sim:
-#     db: nc_local
-#     type: local
-
 # tasks:
 #   - type: 0
 #     pools: 
-#       - nc_local
-#     db: nc_local
+#       - bebop1
+#       # - bebop2
+#     db: bebop
+
+task_queues:
+  # Run with py3.10!!!
+  sim:
+    db: nc_local
+    type: local
+
+tasks:
+  - type: 0
+    pools: 
+      - nc_local
+    db: nc_local
 
 proxystore:
    globus_config:
@@ -54,12 +54,12 @@ proxystore:
 
 ## ME Parameters ##
 
-search_space_size: 1000
+search_space_size: 100
 sample_dimensions: 4
 runtime: 1
 runtime_var: 1
-num_guesses: 500
-retrain_after: 50
+num_guesses: 50
+retrain_after: 10
 
 ## FX Endpoints, Pool and DB definitions ##
 

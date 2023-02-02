@@ -89,7 +89,7 @@ def _launch_worker_pool(exp_id, launch_script, cfg_params):
 
 
 class LocalPool:
-    def __init__(self, db, type, params):
+    def __init__(self, name, db, type, params):
         self.db = db
         self.type = type
         self.cfg = {}
@@ -101,6 +101,7 @@ class LocalPool:
         self.cfg['CFG_DB_USER'] = db.db_user
         self.cfg['CFG_DB_NAME'] = db.db_name
         self.cfg['CFG_TASK_TYPE'] = self.type
+        self.cfg['CFG_POOL_ID'] = name
         self.start_pool_script = params['start_pool_script']
 
     def start(self, exp_id):
@@ -113,7 +114,7 @@ class LocalPool:
 
 class RemotePool:
 
-    def __init__(self, fx_executor, db, type, params):
+    def __init__(self, name, fx_executor, db, type, params):
         self.fx = fx_executor
         self.db = db
         self.type = type
@@ -126,6 +127,7 @@ class RemotePool:
         self.cfg['CFG_DB_USER'] = db.db_user
         self.cfg['CFG_DB_NAME'] = db.db_name
         self.cfg['CFG_TASK_TYPE'] = self.type
+        self.cfg['CFG_POOL_ID'] = name
         self.start_pool_script = params['start_pool_script']
 
     def start(self, exp_id):
@@ -170,9 +172,9 @@ def initialize_worker_pools(exp_id, pool_names, fx_executors, dbs, params):
         pool_params = params['pools'][name]
         if pool_params['type'] == 'funcx':
             fx = fx_executors[pool_params['fx_endpoint']]
-            pool = RemotePool(fx, db, task_type, pool_params)
+            pool = RemotePool(name, fx, db, task_type, pool_params)
         elif pool_params['type'] == 'local':
-            pool = LocalPool(db, task_type, pool_params)
+            pool = LocalPool(name, db, task_type, pool_params)
 
         pool.start(_get_pool_exp_id(exp_id))
         pools[name] = pool

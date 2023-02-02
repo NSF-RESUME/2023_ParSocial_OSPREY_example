@@ -32,7 +32,7 @@ def query_task(eq_work_type: int, worker_pool: str, query_timeout: float = 120.0
         eq_sql.logger.debug('swift out_get done')
         return '|'.join(items)
     except Exception:
-        eq_sql.logger.error(f'tasks.query_task error {traceback.format_exc()}')
+        eq_sql.logger.error(f'eq_swift.query_task error {traceback.format_exc()}')
         # result_str returned via swift's python persist
         return eq.ABORT_JSON_MSG
     finally:
@@ -42,15 +42,16 @@ def query_task(eq_work_type: int, worker_pool: str, query_timeout: float = 120.0
 
 def report_task(eq_task_id: int, eq_work_type: int, result_payload: str,
                 retry_threshold: int = 0, log_level=logging.WARN):
-    
+    eq_sql = None
     try:
         eq_sql = _create_eqsql(retry_threshold, log_level)
         # TODO this returns a ResultStatus, add FAILURE handling
         eq_sql.report_task(eq_task_id, eq_work_type, result_payload)
     except Exception:
-        eq_sql.logger.error(f'tasks.report_task error {traceback.format_exc()}')
+        eq_sql.logger.error(f'eq_swift.report_task error {traceback.format_exc()}')
     finally:
-        eq_sql.close()
+        if eq_sql is not None:
+            eq_sql.close()
 
 
 _q = mp.Queue(1)
@@ -71,6 +72,7 @@ def query_tasks_n(batch_size: int, threshold: int, work_type: int, worker_pool: 
         except Exception:
             eq_sql.logger.error(f'eq_swift.query_task_n error {traceback.format_exc()}')
             q.put([eq.ABORT_JSON_MSG])
+            break
         finally:
             if eq_sql is not None:
                 eq_sql.close()

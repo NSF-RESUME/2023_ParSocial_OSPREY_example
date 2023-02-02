@@ -79,7 +79,7 @@ for f in ${CFG_EXTRA_FILES_TO_INCLUDE[@]}; do
 done
 
 CMD_LINE_ARGS="--sim_work_type=$CFG_TASK_TYPE --batch_size=$CFG_BATCH_SIZE "
-CMD_LINE_ARGS+="--batch_threshold=$CFG_BATCH_THRESHOLD $*"
+CMD_LINE_ARGS+="--batch_threshold=$CFG_BATCH_THRESHOLD --worker_pool_id=$CFG_POOL_ID $*"
 
 
 # Add any script variables that you want to log as

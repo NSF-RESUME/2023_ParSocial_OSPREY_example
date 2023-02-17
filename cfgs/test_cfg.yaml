@@ -1,0 +1,181 @@
+task_queues:
+  sim:
+    db: bebop
+    type: queue_server
+    fx_endpoint: bebop
+    host: 127.0.0.1
+    port: 11218
+    tunnel:
+      config_key: Bebop
+      # ssh_config: /home/nick/.ssh/config
+      ssh_config: /Users/nick/.ssh/config
+      port: 11219
+
+# task_queues:
+#   sim:
+#     db: bebop
+#     type: funcx
+#     fx_endpoint: bebop
+
+
+tasks:
+  - type: 0
+    pools: 
+      - bebop1
+      # - bebop2
+    db: bebop
+
+# task_queues:
+#   # Run with py3.10!!!
+#   sim:
+#     db: nc_local
+#     type: local
+
+# tasks:
+#   - type: 0
+#     pools: 
+#       - nc_local
+#     db: nc_local
+
+reprioritize_endpoint: theta
+proxystore:
+  #  globus_config:
+  #       # bebop
+  #       61f9954c-a4fa-11ea-8f07-0a21f750d19b:
+  #         # host_regex: beboplogin[1-5]
+  #         host_regex: dis-[0-9]{1,4}
+  #         endpoint_path: ~/proxy-store
+  #         local_path: ~/proxy-store
+  #       # nc GCP
+  #       957f111a-a242-11ed-a2a4-8383522b48d9:
+  #         host_regex: MacBook-Pro\.local
+  #         endpoint_path: ~/proxy-store
+  #         local_path: ~/proxy-store
+
+  # globus_config:
+  #   # midway2
+  #   af7bda53-6d04-11e5-ba46-22000b92c6ec:
+  #     # host_regex: beboplogin[1-5]
+  #     # host_regex: midway2-[0-9]{1,4}\.rcc\.local
+  #     host_regex: 'midway2-login[0-9]\.rcc\.local'
+  #     endpoint_path: ~/proxy-store
+  #     local_path: ~/proxy-store
+  #   # nc GCP
+  #   957f111a-a242-11ed-a2a4-8383522b48d9:
+  #     host_regex: MacBook-Pro\.local
+  #     endpoint_path: ~/proxy-store
+  #     local_path: ~/proxy-store
+
+  globus_config:
+    # theta
+    ad8503e9-2de7-4577-acd2-f5df252b9a70:
+      host_regex: thetalogin[1-6]
+      endpoint_path: /proxy-store
+      local_path: /lus/eagle/projects/ModelCRC/proxy-store
+    # nc GCP
+    957f111a-a242-11ed-a2a4-8383522b48d9:
+      host_regex: MacBook-Pro\.local
+      endpoint_path: ~/proxy-store
+      local_path: ~/proxy-store
+
+## ME Parameters ##
+
+search_space_size: 750
+sample_dimensions: 4
+runtime: 2
+runtime_var: 1
+num_guesses: 750
+retrain_after: 50
+
+## FX Endpoints, Pool and DB definitions ##
+
+fx_endpoints:
+  bebop: d526418b-8920-4bc9-a9a0-3c97e1a10d3b
+  condo: 3e2ee533-db51-45be-ae9f-7bc7e6ee3dc5
+  midway: f5b0da89-da31-44ad-b4f6-70fab69124e8
+  midway_compute: 4190440c-bac3-4890-a2ef-40eccb4f51a5
+  theta: 7884f6e9-a324-4678-90cd-0658eecc8970
+
+pools:
+  nc_local:
+    type: local
+    start_pool_script: /home/nick/Documents/repos/eqsql_examples/asynch_repriority/swift/local_worker_pool.sh
+    CFG_NODES: 4
+    CFG_PPN: 1
+    CFG_PROCS: $(( CFG_NODES * CFG_PPN ))
+    # CFG_DB_PORT: 5433
+    # CFG_DB_USER: eqsql_test_user
+    # CFG_DB_NAME: eqsql_test_db
+    # CFG_DB_HOST: localhost
+    CFG_BATCH_SIZE: $(( CFG_PROCS - 2 ))
+    CFG_BATCH_THRESHOLD: 1
+
+  bebop1:
+    type: funcx
+    fx_endpoint: bebop
+    start_pool_script: /lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/bebop_worker_pool.sh
+    CFG_PPN: 36
+    CFG_NODES: 1
+    CFG_PROCS: $(( CFG_NODES * CFG_PPN ))
+    # CFG_DB_PORT: 3149
+    # CFG_DB_USER: collier
+    # CFG_DB_NAME: EQ_SQL
+    CFG_BATCH_SIZE: $(( CFG_PROCS - 3 ))
+    CFG_BATCH_THRESHOLD: 15
+    CFG_WALLTIME: 01:00:00
+    CFG_QUEUE: dis
+    CFG_PROJECT: CONDO
+
+  bebop2:
+    type: funcx
+    fx_endpoint: bebop
+    start_pool_script: /lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/bebop_worker_pool.sh
+    CFG_PPN: 36
+    CFG_NODES: 1
+    CFG_PROCS: $(( CFG_NODES * CFG_PPN ))
+    # CFG_DB_PORT: 3149
+    # CFG_DB_USER: collier
+    # CFG_DB_NAME: EQ_SQL
+    CFG_BATCH_SIZE: $(( CFG_PROCS - 3 ))
+    CFG_BATCH_THRESHOLD: 15
+    CFG_WALLTIME: 01:00:00
+    CFG_QUEUE: dis
+    CFG_PROJECT: CONDO
+
+  bebop3:
+    type: funcx
+    fx_endpoint: bebop
+    start_pool_script: /lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/bebop_worker_pool.sh
+    CFG_PPN: 36
+    CFG_NODES: 1
+    CFG_PROCS: $(( CFG_NODES * CFG_PPN ))
+    # CFG_DB_PORT: 3149
+    # CFG_DB_USER: collier
+    # CFG_DB_NAME: EQ_SQL
+    CFG_BATCH_SIZE: $(( CFG_PROCS - 3 ))
+    CFG_BATCH_THRESHOLD: 15
+    CFG_WALLTIME: 01:00:00
+    CFG_QUEUE: dis
+    CFG_PROJECT: CONDO
+
+dbs:
+  nc_local:
+    type: local
+    db_host: localhost
+    db_user: eqsql_test_user
+    db_port: 5433
+    db_name: eqsql_test_db
+
+  bebop:
+    type: funcx
+    fx_endpoint: bebop
+    db_user: collier
+    db_port: 3149
+    db_name: EQ_SQL
+    db_data: /lcrc/project/EMEWS/bebop/db
+    env:
+      PATH: /lcrc/project/EMEWS/bebop/sfw/gcc-7.1.0/postgres-14.2/bin
+      LD_LIBRARY_PATH': /lcrc/project/EMEWS/bebop/sfw/gcc-7.1.0/postgres-14.2/lib
+    start_cmd: nice -n 19 pg_ctl -D ${db_data} -l ${db_data}/db.log -o "-p ${db_port}" start
+    # start_cmd: pg_ctl -D ${db_data} -l ${db_data}/db.log -o "-p ${db_port}" start
+    stop_cmd: pg_ctl -D ${db_data} stop

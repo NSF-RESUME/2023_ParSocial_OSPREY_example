@@ -1,0 +1,1260 @@
+TURBINE-SLURM.SH
+START: 2023-02-06 14:37:07
+
++ srun /gpfs/fs1/home/software/spack-0.10.1/opt/spack/linux-centos7-x86_64/gcc-7.1.0/tcl-8.6.8-blvvcoseerw2hsb3d5fhezczx3mjgxy2/bin/tclsh8.6 /lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/experiments/t5-bebop2_1675715815.961749/swift-t-worker_pool_batch.aje.tic --sim_work_type=0 --batch_size=34 --batch_threshold=10 --worker_pool_id=bebop2 t5-bebop2_1675715815.961749 /tmp/tmpeu3lwgbd
+TASK START: 719 1675715830.011396
+TASK START: 753 1675715830.162957
+TASK START: 765 1675715830.191918
+TASK START: 758 1675715830.197684
+TASK START: 767 1675715830.204322
+TASK START: 762 1675715830.209192
+TASK START: 761 1675715830.213032
+TASK START: 764 1675715830.213445
+TASK START: 772 1675715830.217018
+TASK START: 723 1675715830.219104
+TASK START: 746 1675715830.222144
+TASK START: 749 1675715830.223582
+TASK START: 724 1675715830.225256
+TASK START: 754 1675715830.227397
+TASK START: 720 1675715830.230849
+TASK START: 750 1675715830.238254
+TASK START: 752 1675715830.243601
+TASK START: 768 1675715830.244187
+TASK START: 760 1675715830.246907
+TASK START: 755 1675715830.248036
+TASK START: 748 1675715830.249962
+TASK START: 759 1675715830.250499
+TASK START: 722 1675715830.250988
+TASK START: 770 1675715830.254199
+TASK START: 773 1675715830.255065
+TASK START: 725 1675715830.256996
+TASK START: 757 1675715830.257942
+TASK START: 756 1675715830.266215
+TASK START: 721 1675715830.267374
+TASK START: 771 1675715830.269642
+TASK START: 769 1675715830.271711
+TASK START: 763 1675715830.275105
+TASK START: 766 1675715830.275113
+TASK START: 751 1675715830.277694
+TASK END: 719 1675715831.673125
+TASK END: 749 1675715831.88999
+TASK END: 750 1675715831.934603
+TASK END: 721 1675715831.980671
+TASK END: 752 1675715832.024858
+TASK END: 722 1675715832.074379
+TASK END: 766 1675715832.105235
+TASK END: 758 1675715832.133956
+TASK END: 723 1675715832.171563
+TASK END: 763 1675715832.318453
+TASK END: 760 1675715832.322052
+TASK END: 759 1675715832.418837
+TASK END: 769 1675715832.44973
+TASK END: 724 1675715832.474978
+TASK END: 772 1675715833.041927
+TASK END: 746 1675715833.058415
+TASK START: 776 1675715833.552898
+TASK START: 737 1675715833.552875
+TASK START: 785 1675715833.552856
+TASK START: 780 1675715833.552961
+TASK START: 784 1675715833.552952
+TASK START: 781 1675715833.552947
+TASK START: 734 1675715833.552931
+TASK START: 778 1675715833.552994
+TASK START: 782 1675715833.552978
+TASK START: 775 1675715833.553017
+TASK START: 774 1675715833.553019
+TASK START: 777 1675715833.553046
+TASK START: 736 1675715833.553181
+TASK START: 783 1675715833.553284
+TASK START: 779 1675715833.553319
+TASK START: 738 1675715833.553437
+TASK END: 780 1675715833.578059
+TASK END: 777 1675715833.583235
+TASK END: 778 1675715834.052177
+TASK END: 755 1675715834.137413
+TASK END: 782 1675715834.143316
+TASK END: 773 1675715835.423175
+TASK END: 776 1675715835.450366
+TASK END: 738 1675715835.490746
+TASK END: 751 1675715835.853152
+TASK END: 781 1675715836.104636
+TASK END: 767 1675715836.816205
+TASK END: 785 1675715837.079687
+TASK START: 619 1675715837.390941
+TASK START: 604 1675715837.390998
+TASK START: 612 1675715837.391023
+TASK START: 610 1675715837.39108
+TASK START: 618 1675715837.391104
+TASK START: 613 1675715837.391136
+TASK START: 615 1675715837.391147
+TASK START: 614 1675715837.391147
+TASK START: 620 1675715837.391216
+TASK START: 611 1675715837.391319
+TASK START: 621 1675715837.391428
+TASK START: 617 1675715837.391752
+TASK END: 614 1675715837.716151
+TASK END: 620 1675715837.979554
+TASK END: 615 1675715838.100059
+TASK END: 754 1675715838.182843
+TASK END: 734 1675715838.191893
+TASK END: 611 1675715838.45069
+TASK END: 775 1675715839.416962
+TASK END: 621 1675715839.571748
+TASK END: 774 1675715840.506354
+TASK END: 770 1675715842.161756
+TASK END: 737 1675715842.532075
+TASK START: 616 1675715842.741633
+TASK START: 629 1675715842.741607
+TASK START: 632 1675715842.741692
+TASK START: 626 1675715842.741702
+TASK START: 628 1675715842.741746
+TASK START: 625 1675715842.741753
+TASK START: 799 1675715842.741842
+TASK START: 624 1675715842.741839
+TASK START: 631 1675715842.741884
+TASK START: 627 1675715842.741896
+TASK START: 630 1675715842.742426
+TASK END: 630 1675715842.772409
+TASK END: 631 1675715842.949032
+TASK END: 610 1675715843.428575
+TASK END: 725 1675715843.806007
+TASK END: 783 1675715843.842225
+TASK END: 619 1675715844.09494
+TASK END: 762 1675715844.148082
+TASK END: 627 1675715844.210399
+TASK END: 765 1675715845.466508
+TASK END: 799 1675715845.535257
+TASK END: 613 1675715845.903373
+TASK END: 628 1675715845.905257
+TASK END: 626 1675715846.48499
+TASK START: 639 1675715846.581494
+TASK START: 595 1675715846.581493
+TASK START: 637 1675715846.581585
+TASK START: 603 1675715846.581598
+TASK START: 596 1675715846.581626
+TASK START: 599 1675715846.58163
+TASK START: 602 1675715846.581658
+TASK START: 598 1675715846.581726
+TASK START: 597 1675715846.581721
+TASK START: 600 1675715846.581708
+TASK START: 601 1675715846.581744
+TASK START: 594 1675715846.581788
+TASK START: 593 1675715846.581897
+TASK END: 598 1675715846.708572
+TASK END: 595 1675715846.75117
+TASK END: 736 1675715846.859486
+TASK END: 603 1675715846.902616
+TASK END: 599 1675715847.125323
+TASK END: 637 1675715847.511527
+TASK END: 594 1675715849.083732
+TASK END: 639 1675715849.144598
+TASK END: 593 1675715849.266654
+TASK END: 624 1675715849.498149
+TASK END: 612 1675715850.229911
+TASK START: 569 1675715850.424871
+TASK START: 567 1675715850.424921
+TASK START: 568 1675715850.424929
+TASK START: 570 1675715850.42497
+TASK START: 587 1675715850.424966
+TASK START: 588 1675715850.42497
+TASK START: 808 1675715850.425038
+TASK START: 809 1675715850.42498
+TASK START: 806 1675715850.425003
+TASK START: 810 1675715850.425025
+TASK START: 807 1675715850.425057
+TASK END: 597 1675715850.572385
+TASK END: 570 1675715850.598929
+TASK END: 807 1675715850.81699
+TASK END: 587 1675715850.832934
+TASK END: 588 1675715850.902308
+TASK END: 753 1675715851.427966
+TASK END: 810 1675715851.499825
+TASK END: 568 1675715851.88041
+TASK END: 600 1675715852.839838
+TASK END: 784 1675715853.362623
+TASK END: 779 1675715854.159948
+TASK END: 567 1675715854.256493
+TASK START: 812 1675715854.263376
+TASK START: 940 1675715854.263361
+TASK START: 941 1675715854.263424
+TASK START: 813 1675715854.263451
+TASK START: 944 1675715854.263426
+TASK START: 945 1675715854.26352
+TASK START: 811 1675715854.26356
+TASK START: 942 1675715854.263634
+TASK START: 577 1675715854.263628
+TASK START: 814 1675715854.263659
+TASK START: 943 1675715854.263723
+TASK END: 757 1675715854.758526
+TASK END: 812 1675715854.801272
+TASK END: 941 1675715854.829972
+TASK END: 942 1675715854.937393
+TASK END: 945 1675715854.962343
+TASK END: 806 1675715855.021469
+TASK END: 808 1675715855.96181
+TASK END: 569 1675715857.760623
+TASK END: 813 1675715858.328245
+TASK END: 940 1675715858.414893
+TASK END: 596 1675715858.41537
+TASK END: 944 1675715858.669546
+TASK END: 604 1675715859.272904
+TASK START: 562 1675715859.612294
+TASK START: 555 1675715859.612313
+TASK START: 549 1675715859.612415
+TASK START: 559 1675715859.612396
+TASK START: 552 1675715859.61239
+TASK START: 556 1675715859.612458
+TASK START: 551 1675715859.612439
+TASK START: 561 1675715859.612521
+TASK START: 550 1675715859.612521
+TASK START: 557 1675715859.612532
+TASK START: 560 1675715859.612537
+TASK START: 558 1675715859.612527
+TASK START: 553 1675715859.612594
+TASK START: 564 1675715859.612725
+TASK END: 553 1675715859.656231
+TASK END: 559 1675715859.660274
+TASK END: 564 1675715859.917554
+TASK END: 555 1675715859.961219
+TASK END: 552 1675715860.039397
+TASK END: 556 1675715860.137438
+TASK END: 551 1675715860.290556
+TASK END: 809 1675715860.374112
+TASK END: 550 1675715862.421571
+TASK END: 561 1675715862.670702
+TASK END: 560 1675715862.96247
+TASK START: 831 1675715863.458284
+TASK START: 832 1675715863.458313
+TASK START: 835 1675715863.458352
+TASK START: 540 1675715863.458369
+TASK START: 828 1675715863.458355
+TASK START: 829 1675715863.458426
+TASK START: 830 1675715863.458448
+TASK START: 826 1675715863.458483
+TASK START: 836 1675715863.458469
+TASK START: 834 1675715863.458577
+TASK START: 833 1675715863.458649
+TASK END: 829 1675715863.674756
+TASK END: 828 1675715863.877002
+TASK END: 834 1675715864.006581
+TASK END: 831 1675715864.171001
+TASK END: 832 1675715864.20062
+TASK END: 826 1675715864.242907
+TASK END: 540 1675715864.490851
+TASK END: 835 1675715865.010834
+TASK END: 632 1675715865.120857
+TASK END: 720 1675715865.306436
+TASK START: 958 1675715866.036863
+TASK START: 961 1675715866.036854
+TASK START: 988 1675715866.036861
+TASK START: 985 1675715866.036873
+TASK START: 959 1675715866.036899
+TASK START: 987 1675715866.036906
+TASK START: 984 1675715866.036945
+TASK START: 986 1675715866.036958
+TASK START: 983 1675715866.03691
+TASK START: 960 1675715866.036958
+TASK END: 943 1675715866.046997
+TASK END: 987 1675715866.122903
+TASK END: 985 1675715866.486439
+TASK END: 983 1675715866.560774
+TASK END: 617 1675715866.830794
+TASK END: 961 1675715866.953227
+TASK END: 601 1675715867.41125
+TASK END: 833 1675715868.524885
+TASK END: 958 1675715870.649336
+TASK END: 756 1675715871.08528
+TASK END: 577 1675715871.231657
+TASK START: 518 1675715871.393323
+TASK START: 519 1675715871.393342
+TASK START: 513 1675715871.393388
+TASK START: 848 1675715871.393435
+TASK START: 516 1675715871.393449
+TASK START: 515 1675715871.39348
+TASK START: 849 1675715871.393494
+TASK START: 514 1675715871.393516
+TASK START: 517 1675715871.393536
+TASK START: 847 1675715871.393625
+TASK START: 846 1675715871.39365
+TASK END: 847 1675715871.413316
+TASK END: 986 1675715871.500469
+TASK END: 846 1675715871.912863
+TASK END: 959 1675715871.981532
+TASK END: 517 1675715872.06212
+TASK END: 549 1675715872.804813
+TASK END: 516 1675715874.250165
+TASK END: 514 1675715874.27265
+TASK END: 848 1675715875.4863
+TASK END: 562 1675715877.38597
+TASK END: 849 1675715877.743502
+TASK END: 513 1675715877.973572
+TASK START: 486 1675715878.518243
+TASK START: 477 1675715878.518225
+TASK START: 507 1675715878.518262
+TASK START: 472 1675715878.518275
+TASK START: 478 1675715878.518309
+TASK START: 474 1675715878.518369
+TASK START: 475 1675715878.518369
+TASK START: 506 1675715878.518401
+TASK START: 473 1675715878.51841
+TASK START: 476 1675715878.518464
+TASK START: 479 1675715878.518479
+TASK START: 480 1675715878.518498
+TASK END: 486 1675715878.798767
+TASK END: 479 1675715878.799518
+TASK END: 476 1675715878.812958
+TASK END: 473 1675715879.030512
+TASK END: 507 1675715879.494392
+TASK END: 480 1675715879.877945
+TASK END: 506 1675715880.346693
+TASK END: 477 1675715880.514962
+TASK END: 771 1675715881.122444
+TASK END: 616 1675715881.164406
+TASK END: 474 1675715881.47797
+TASK START: 993 1675715882.357614
+TASK START: 966 1675715882.357694
+TASK START: 991 1675715882.357703
+TASK START: 967 1675715882.357716
+TASK START: 990 1675715882.357681
+TASK START: 997 1675715882.357723
+TASK START: 998 1675715882.357777
+TASK START: 996 1675715882.357786
+TASK START: 992 1675715882.357784
+TASK START: 995 1675715882.357821
+TASK START: 994 1675715882.358242
+TASK END: 967 1675715882.447127
+TASK END: 990 1675715882.56545
+TASK END: 998 1675715883.558819
+TASK END: 966 1675715883.716131
+TASK END: 478 1675715883.807804
+TASK END: 960 1675715884.70547
+TASK END: 557 1675715887.743219
+TASK END: 992 1675715888.901102
+TASK END: 618 1675715891.270816
+TASK END: 984 1675715891.780476
+TASK END: 991 1675715892.53296
+TASK END: 515 1675715895.596102
+TASK END: 994 1675715897.007134
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 997 1675715898.463288
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 472 1675715898.94115
+eq_swift.query_task_n error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 76, in query_tasks_n
+    eq_sql = _create_eqsql(retry_threshold)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+loop.swift: got EQ_ABORT: exiting!
+worker pool: normal exit.
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 629 1675715904.509918
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 518 1675715911.423427
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 830 1675715920.832147
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 836 1675715923.337756
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 602 1675715932.042868
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 996 1675715934.400775
+TASK END: 475 1675715940.748951
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 519 1675715945.475669
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 988 1675715973.347925
+TASK END: 558 1675715978.984166
+TASK END: 748 1675715983.927724
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 995 1675716027.228911
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 993 1675716052.864809
+TASK END: 768 1675716071.923408
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 625 1675716085.339644
+TASK END: 814 1675716089.948527
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 764 1675716123.131062
+TASK END: 811 1675716139.454516
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+TASK END: 761 1675716518.129146
+eq_swift.report_task error Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 73, in connect
+    self.conn = psycopg2.connect("dbname="+self.dbname,
+  File "/home/collier/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 52, in report_task
+    eq_sql = _create_eqsql(retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/swift/ext/eq_swift.py", line 19, in _create_eqsql
+    return eq.init_eqsql(host, user, port, db_name, retry_threshold, log_level)
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 195, in init_eqsql
+    raise e
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/eq.py", line 190, in init_eqsql
+    db.connect()
+  File "/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python/eqsql/db_tools.py", line 79, in connect
+    raise ConnectionException(e)
+eqsql.db_tools.ConnectionException: connection to server at "beboplogin3.lcrc.anl.gov" (10.70.128.7), port 3149 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+ADLB Total Elapsed Time: 704.250
+python: initializing...
+python: initializing...
+turbine finalizing at: 704.249
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+python: initializing...
+
+MPIEXEC TIME: 706.964
+EXIT CODE: 0
+COMPLETE: 2023-02-06 14:48:54
+[3;J[H[2J

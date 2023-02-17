@@ -156,11 +156,11 @@ def _find_task_for_pool(pool_name, params):
                 return (task['type'], task['db'])
 
 
-def _get_pool_exp_id(exp_id: str):
+def _get_pool_exp_id(exp_id: str, name: str):
     dt = datetime.now()
     # getting the timestamp
     ts = datetime.timestamp(dt)
-    return f'{exp_id}_{ts}'
+    return f'{exp_id}-{name}_{ts}'
 
 
 def initialize_worker_pools(exp_id, pool_names, fx_executors, dbs, params):
@@ -176,7 +176,7 @@ def initialize_worker_pools(exp_id, pool_names, fx_executors, dbs, params):
         elif pool_params['type'] == 'local':
             pool = LocalPool(name, db, task_type, pool_params)
 
-        pool.start(_get_pool_exp_id(exp_id))
+        pool.start(_get_pool_exp_id(exp_id, name))
         pools[name] = pool
 
     return pools

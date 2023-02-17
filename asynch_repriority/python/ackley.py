@@ -2,6 +2,8 @@ import numpy as np
 import time
 import json
 
+np.random.seed(42)
+
 
 def run(payload: str) -> str:
     args = json.loads(payload)
@@ -12,6 +14,7 @@ def run(payload: str) -> str:
     result = ackley(x, mean_rt=mean_rt, std_rt=std_rt)
     # print(f'Result: {result}', flush=True)
     return json.dumps(result)
+
 
 def ackley(x: np.ndarray, a=20, b=0.2, c=2 * np.pi, mean_rt=0, std_rt=0.1) -> np.float64:
     """The Ackley function (http://www.sfu.ca/~ssurjano/ackley.html)
@@ -25,7 +28,6 @@ def ackley(x: np.ndarray, a=20, b=0.2, c=2 * np.pi, mean_rt=0, std_rt=0.1) -> np
     Returns:
         y (ndarray): Output of the Ackley function
     """
-
     # Simulate this actually taking awhile
     runtime = np.random.lognormal(mean_rt, std_rt)
     time.sleep(runtime)

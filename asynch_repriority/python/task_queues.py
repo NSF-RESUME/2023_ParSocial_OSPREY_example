@@ -12,6 +12,7 @@ class RemoteTask:
         self.eq_task_id = task_id
         self.task_type = task_type
         self._result = None
+        self.priority = 0
 
     def result(self):
         return self._result
@@ -89,6 +90,8 @@ class RESTfulTaskQueue:
         return completed_tasks
 
     def update_priorities(self, tasks: List[RemoteTask], new_priorities: List[int]):
+        for i, task in enumerate(tasks):
+            task.priority = new_priorities[i]
         api_url = f'{self.api_host}/update_priorities'
         msg = {'task_ids': [ft.eq_task_id for ft in tasks], 'new_priorities': new_priorities}
         requests.post(api_url, json=json.dumps(msg))
@@ -164,6 +167,8 @@ class FXTaskQueue:
             import remote_db
             return remote_db.update_priorities(task_ids, new_priorities)
 
+        for i, task in enumerate(tasks):
+            task.priority = new_priorities[i]
         task_ids = [rt.eq_task_id for rt in tasks]
         ft = self.fx.submit(_update_priorities, task_ids, new_priorities)
         ft.result()

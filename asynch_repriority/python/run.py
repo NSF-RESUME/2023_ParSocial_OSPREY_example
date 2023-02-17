@@ -16,7 +16,7 @@ import lifecycle
 def reprioritize_queue(training_data: List[List],
                        pred_data: List[np.array],
                        gpr: GaussianProcessRegressor,
-                       opt_delay: float = 0) -> np.ndarray:
+                       opt_delay: float = 0.5) -> np.ndarray:
     """Determine an optimal order in which to excecute a task queue
 
     Args:
@@ -31,7 +31,9 @@ def reprioritize_queue(training_data: List[List],
     import time
     import numpy as np
     import scipy
+    import datetime
 
+    start = datetime.datetime.now(tz=datetime.timezone.utc).timestamp()
     time.sleep(opt_delay)
 
     # Update the GPR with the available training data
@@ -46,7 +48,8 @@ def reprioritize_queue(training_data: List[List],
     ei = (best_so_far - pred_y) * scipy.stats.norm(0, 1).cdf((best_so_far - pred_y) / pred_std) + pred_std * scipy.stats.norm(0, 1).pdf((best_so_far - pred_y) / pred_std)
 
     # Argument sort the EI score, ordered with largest tasks first
-    return np.argsort(-1 * ei)
+    end = datetime.datetime.now(tz=datetime.timezone.utc).timestamp()
+    return start, end, np.argsort(-1 * ei)
 
 
 def reprioritize_fx(fx, completed, pred_data, gpr):
@@ -56,25 +59,34 @@ def reprioritize_fx(fx, completed, pred_data, gpr):
     return ft.result()
 
 
-def reprioritize(task_queue, fx, database: Dict[int, List]):
+def reprioritize(task_queue, fx, database: Dict[int, List], output_file=None):
     completed = [x[1:] for x in filter(lambda x: x[2] is not None, database.values())]
     uncompleted = [x[:2] for x in filter(lambda x: x[2] is None, database.values())]
-    gpr = Pipeline([('scale', MinMaxScaler(feature_range=(-1, 1))),
-                    ('gpr', GaussianProcessRegressor(normalize_y=True, kernel=kernels.RBF() * kernels.ConstantKernel()))
-                    ])
-    # x[1] is input array
-    new_order = reprioritize_queue(completed, [x[1] for x in uncompleted], gpr=gpr)
-    # new_order = reprioritize_fx(fx, completed, [x[1] for x in uncompleted], gpr=gpr)
-    fts = []
-    priorities = []
-    max_priority = len(uncompleted)
-    for i, idx in enumerate(new_order):
-        ft = uncompleted[idx][0]
-        priority = max_priority - i
-        fts.append(ft)
-        priorities.append(priority)
+    if len(uncompleted) > 0:
+        gpr = Pipeline([('scale', MinMaxScaler(feature_range=(-1, 1))),
+                        ('gpr', GaussianProcessRegressor(normalize_y=True, kernel=kernels.RBF() * kernels.ConstantKernel()))
+                        ])
+        # x[1] is input array
+        # start_t, end_t, new_order = reprioritize_queue(completed, [x[1] for x in uncompleted], gpr=gpr)
+        start_t, end_t, new_order = reprioritize_fx(fx, completed, [x[1] for x in uncompleted], gpr=gpr)
 
-    task_queue.update_priorities(fts, priorities)
+        fts = []
+        priorities = []
+        max_priority = len(uncompleted)
+        for i, idx in enumerate(new_order):
+            ft = uncompleted[idx][0]
+            priority = max_priority - i
+            fts.append(ft)
+            priorities.append(priority)
+
+        if output_file is not None:
+            with open(output_file, 'a') as f_out:
+                f_out.write(f'R START: {start_t}\n')
+                f_out.write(f'R END: {end_t}\n')
+                for i, ft in enumerate(fts):
+                    f_out.write(f'P UPDATE: {ft.eq_task_id} {ft.priority} {priorities[i]}\n')
+
+        task_queue.update_priorities(fts, priorities)
 
 
 def submit_initial_tasks(task_queue, exp_id, params: Dict):
@@ -100,12 +112,15 @@ def submit_initial_tasks(task_queue, exp_id, params: Dict):
 
 
 def run(exp_id, params: Dict):
+    output_file = f'./output/{exp_id}_output.txt'
     # To avoid errors in finally
     task_queues = pools = dbs = fx_executors = {}
     try:
         fx_endpoints, db_names, pool_names = lifecycle.find_active_elements(params)
-        if 'condo' not in fx_endpoints:
-            fx_endpoints.append('condo')
+        repro_endpoint = params['reprioritize_endpoint']
+        if repro_endpoint not in fx_endpoints:
+            fx_endpoints.append(repro_endpoint)
+
         fx_executors = lifecycle.initialize_fx_endpoints(fx_endpoints, params)
         dbs = lifecycle.initialize_dbs(db_names, fx_executors, params)
         task_queues = lifecycle.initialize_task_queues(fx_executors, dbs, params)
@@ -124,6 +139,7 @@ def run(exp_id, params: Dict):
         print(f'NUM GUESSES: {num_guesses}')
         print(f'RETRAIN AFTER: {retrain_after}')
         print(f'FTS: {len(fts)}')
+        num_repro = 0
         while tasks_completed < num_guesses:
             completed_fts = task_queue.pop_completed(fts, n=retrain_after)
             for ft in completed_fts:
@@ -132,7 +148,20 @@ def run(exp_id, params: Dict):
                 tasks_completed += 1
 
             print(f"tasks completed: {tasks_completed}")
-            reprioritize(task_queue, fx_executors['condo'], database)
+            reprioritize(task_queue, fx_executors[repro_endpoint], database, output_file=output_file)
+            num_repro += 1
+            if num_repro == 2:
+                # pool_names = 'bebop2', add 'bebop2' to params with params['tasks'][0]['pools'].append()
+                params['tasks'][0]['pools'].append('bebop2')
+                p = lifecycle.initialize_worker_pools(exp_id, ['bebop2'], fx_executors,
+                                                      dbs, params)
+                pools.update(p)
+                print(pools)
+            elif num_repro == 4:
+                params['tasks'][0]['pools'].append('bebop3')
+                p = lifecycle.initialize_worker_pools(exp_id, ['bebop3'], fx_executors,
+                                                      dbs, params)
+                pools.update(p)
 
     finally:
         for task_queue in task_queues.values():

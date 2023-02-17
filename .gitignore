@@ -6,7 +6,9 @@
 
 # R-generated package
 *.tar.gz
+
 scratch/
 experiments/
 turbine-output
 __pycache__
+output

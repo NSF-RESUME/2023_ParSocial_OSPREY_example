@@ -1,7 +1,0 @@
-numpy
-psycopg2
-funcx
-paramiko
-scikit-learn
-pyyaml
-proxystore

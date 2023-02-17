@@ -1,2 +1,1 @@
-# eqsql_examples
-Example workflows using eqsql
+# Prototype Workflow for the 2023 ParSocial Paper

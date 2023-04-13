@@ -336,8 +336,8 @@ def start_flask(host, port):
     import sys
     sys.path.append('/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/python')
     sys.path.append('/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python')
-    import remote_db
-    remote_db.start(host, port)
+    import python.emews_service as emews_service
+    emews_service.start(host, port)
 
 
 def find_active_elements(params: Dict):
@@ -415,7 +415,7 @@ def initialize_task_queues(fx_executors, dbs, params):
             fx = fx_executors[fx_endpoint]
             db = dbs[task_queue_params['db']]
             task_queue = task_queues.FXTaskQueue(fx, db)
-        elif task_queue_type == 'queue_server':
+        elif task_queue_type == 'emews_service':
             # Start Tunnel
             # Start Flask Server - initializing db_host etc.
             fx = fx_executors[task_queue_params['fx_endpoint']]

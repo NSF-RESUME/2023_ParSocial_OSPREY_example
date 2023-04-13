@@ -1,7 +1,7 @@
 task_queues:
   sim:
     db: bebop
-    type: queue_server
+    type: emews_service
     fx_endpoint: bebop
     host: 127.0.0.1
     port: 11218
@@ -10,13 +10,6 @@ task_queues:
       # ssh_config: /home/nick/.ssh/config
       ssh_config: /Users/nick/.ssh/config
       port: 11219
-
-# task_queues:
-#   sim:
-#     db: bebop
-#     type: funcx
-#     fx_endpoint: bebop
-
 
 tasks:
   - type: 0

@@ -115,8 +115,8 @@ class FXTaskQueue:
             import sys
             sys.path.append('/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/python')
             sys.path.append('/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python')
-            import remote_db
-            return remote_db.init_db_params(host, port, user, name)
+            import python.emews_service as emews_service
+            return emews_service.init_db_params(host, port, user, name)
 
         self.fx.submit(__init_db, db.db_host, db.db_port, db.db_user, db.db_name)
 
@@ -127,8 +127,8 @@ class FXTaskQueue:
             import sys
             sys.path.append('/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/python')
             sys.path.append('/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python')
-            import remote_db
-            return remote_db.submit_tasks(exp_id, task_type, payload, priority)
+            import python.emews_service as emews_service
+            return emews_service.submit_tasks(exp_id, task_type, payload, priority)
 
         ft = self.fx.submit(_submit_tasks, exp_id, eq_type, payload, priority)
         return [RemoteTask('', task_id, eq_type) for task_id in ft.result()]
@@ -138,8 +138,8 @@ class FXTaskQueue:
             import sys
             sys.path.append('/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/python')
             sys.path.append('/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python')
-            import remote_db
-            return remote_db.completed_task(task_ids, n)
+            import python.emews_service as emews_service
+            return emews_service.completed_task(task_ids, n)
 
         task_ids = [ft.eq_task_id for ft in tasks]
         ft = self.fx.submit(_pop_completed, task_ids, n)
@@ -164,8 +164,8 @@ class FXTaskQueue:
             import sys
             sys.path.append('/lcrc/project/EMEWS/bebop/repos/eqsql_examples/asynch_repriority/python')
             sys.path.append('/lcrc/project/EMEWS/bebop/repos/EQ-SQL/python')
-            import remote_db
-            return remote_db.update_priorities(task_ids, new_priorities)
+            import python.emews_service as emews_service
+            return emews_service.update_priorities(task_ids, new_priorities)
 
         for i, task in enumerate(tasks):
             task.priority = new_priorities[i]

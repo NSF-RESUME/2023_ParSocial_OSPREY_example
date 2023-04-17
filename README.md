@@ -40,7 +40,7 @@ down any funcX executors.
 
 ## Files
 
-`python`:
+`python/`:
 
 * `ackley.py` - Python implementation of the Ackley function
 * `lifecycle.py` - Python code for managing worker pools and databases, including a ssh tunnel implementation
@@ -49,21 +49,21 @@ priorities)
 * `task_queues.py` - Task API for working with tasks locally, via the EMEWS RESTful service, and using FuncX.
 * `run.py` - Python workflow implementation.
 
-`swift`:
+`swift/`:
 
 * `worker_pool_batch.swift` - Swift/T worker pool implementation, pops tasks from the database queue, executes them, and returns the result to the database.
 * `local_worker_pool.sh` - bash script for starting a local worker pool
 * `bebop_worker_pool.sh` - bash script for starting a remote worker pool (e.g., on Argonne's LCRC 
 Bebop cluster)
 
-`swift\ext`:
+`swift/ext/`:
 
 * `emews.swift` - Utility functions used by the swift worker pools
 * `eq_swift.py` - Python code used by the swift worker pools to interact with the database queues
 * `EQ.swift` - Swift/T funtions for working with task queues using the code in `eq_swift.py`
 
 
-`cfgs`:
+`cfgs/`:
 * `local.cfg` - configuration file for running the local worker pool
 * `test_cfg.yaml` - workflow configuration file, defines the pools, task queues, database properties, etc.
 

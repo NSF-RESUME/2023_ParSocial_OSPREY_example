@@ -1,6 +1,6 @@
 # Prototype Workflow for the 2023 ParSocial Paper
 
-OUr prototype workflow implements an example optimization workflow
+Our prototype workflow implements an example optimization workflow
 that attempts to find the minimum of the Ackley function using a 
 Gaussian process regression model (GPR). Our implementation,
 is based on a similar example problem provided as part of the Colmena [documentation](https://github.com/exalearn/colmena/blob/bd334e0a582fb79d97652d67d05666f13d178f83/demo_apps/optimizer-examples/streaming.py#L1).

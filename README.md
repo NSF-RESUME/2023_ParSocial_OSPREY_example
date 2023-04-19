@@ -1,4 +1,17 @@
-# Prototype Workflow for the 2023 ParSocial Paper
+# Companion Repository for the 2023 OSPREY ParSocial Paper
+
+This repository serves as a companion to the Collier et al. 2023 {CITATION} paper presented at the 2023 ParSocial IPDPS workshop. 
+
+Informed by our team's work in supporting public health decision makers during the COVID-19 pandemic and by the identified capability gaps in applying high-performance computing (HPC) to computational epidemiology, the paper  presents the goals, requirements, and initial implementation of OSPREY, an open science platform for robust epidemic analysis. The prototype implementation demonstrates an integrated, algorithm-driven HPC workflow architecture, coordinating tasks across distributed HPC resources, with robust, secure and automated access to each of the resources. The paper  demonstrates scalable and fault-tolerant task execution, an asynchronous API to support fast time-to-solution algorithms, an inclusive, multi-language approach, and efficient wide-area data management. This repository provides the example OSPREY code described in the paper.  
+
+## Overview
+
+The documentation is structured as follows.
+
+
+## Model Exploration Algorithm
+
+EMEWS workflows {From Desktop CITATION} ...
 
 Our prototype workflow implements an example optimization workflow
 that attempts to find the minimum of the Ackley function using a 
@@ -13,7 +26,7 @@ likely to find an optimal result according to the GPR. This repeats until all th
 
 
 The model exploration (ME) algorithm is a Python script (`python/run.py`) that begins by initializing
-an initial worker pool and an EMEWS DB. When these are located on a remote resource, a funcx
+an initial worker pool and an EMEWS DB. When these are located on a remote resource, a funcX
 client, and the EMEWS service, which mediates between the remote DB and the local model exploration
 algorithm, and an SSH tunnel through which we communicate
 with the EMEWS service are started. After initializing, we create an initial sample set of 750 4-dimensional points, which

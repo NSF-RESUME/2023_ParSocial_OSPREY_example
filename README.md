@@ -1,6 +1,6 @@
 # Companion Repository for the 2023 OSPREY ParSocial Paper
 
-This repository serves as a companion to the [Collier et al. 2023](LINK) paper presented at the 2023 ParSocial IPDPS workshop. 
+This repository serves as a companion to the [Collier et al. 2023](#references) paper, presented at the 2023 ParSocial IPDPS workshop. 
 
 Informed by our team's work in supporting public health decision makers during the COVID-19 pandemic and by the identified capability gaps in applying high-performance computing (HPC) to computational epidemiology, the paper  presents the goals, requirements, and initial implementation of OSPREY, an open science platform for robust epidemic analysis. The prototype implementation demonstrates an integrated, algorithm-driven HPC workflow architecture, coordinating tasks across distributed HPC resources, with robust, secure and automated access to each of the resources. The paper demonstrates scalable and fault-tolerant task execution, an asynchronous API to support fast time-to-solution algorithms, an inclusive, multi-language approach, and efficient wide-area data management. This repository provides the example OSPREY code described in the paper.  
 
@@ -110,9 +110,15 @@ The workflow has the following external requirements:
 
 1. Swift-t - see the installation section of the Swift-t [User Guide](http://swift-lang.github.io/swift-t/guide.html#_installation) for installation instructions. 
 
-2. A postgresql DB - the `db` directory contains scripts for creating the database schema.
+2. A postgresql Database - the `db` directory contains scripts for creating the database schema. 
 
-The database code expects the following environment varibles to be set.
+The postgresql database installation can be of two types: running on an HPC
+login node where it must be manually started, or running locally as system service. For the former,
+if your HPC administrators do not provide a database (e.g., via a `module load`), it can be installed from source. See the postgresql [documentation](https://www.postgresql.org/docs/) for more info. The OSPREY 
+prototype workflow used a database running on a login node, but a local one can be useful for testing.
+
+Regardless of the installation type, the database code uses the following environment variables which
+will be referenced in the following installation instructions.
 
 * DB_HOST: The database host (e.g., localhost or beboplogin3)
 * DB_PORT: The database port
@@ -120,10 +126,7 @@ The database code expects the following environment varibles to be set.
 * DB_NAME: The database name (e.g., EQ_SQL)
 * DB_USER: The database user name
 
-The database installation can be of two types: running on an HPC
-login node where it must be manually started, or running locally as system service. For the former,
-if your HPC administrators do not provide a database (e.g., via a `module load`), it can be installed from source. See
-the postgresql [documentation](https://www.postgresql.org/docs/) for more info.
+Database installation instructions for both types follow.
 
 ### Login Node Database
 
@@ -156,8 +159,9 @@ You can print the current contents of the database with `db-print.sh`.
 ### Local Database
 
 postgres can be installed in a local Linux distribution
-using the distribution's package manager. Assuming postgres is installed
-and running as a system service, the following describes how to
+using the distribution's package manager. A local database can be useful for
+testing and prototyping a workflow before running it on a shared HPC resource.
+Assuming postgres is installed and running as a system service, the following describes how to
 create an EQSQL DB.
 
 #### Create the database cluster
@@ -265,7 +269,7 @@ the `db_data` value.
 
 ### FuncX Endpoint Configuration
 
-FuncX endpoints are defined in the `fx_endpoints` entry.
+FuncX endpoints are defined in the `fx_endpoints` entry. See the FuncX [Documentation](https://funcx.readthedocs.io/en/latest/) for more information on how to setup and define your own endpoints.
 
 ```yaml
 fx_endpoints:
@@ -274,7 +278,7 @@ fx_endpoints:
 ```
 
 The `fx_endpoint` entries in the worker pools and database configuration sections are expected to
-refer to the named endpoints defined here.
+refer to the named endpoints defined here. 
 
 ### ProxyStore Configuration
 
@@ -371,3 +375,9 @@ To run the workflow locally with a local database, and without FuncX, globus, or
 Note `cfgs/local_cfg.yaml` is an example yaml workflow configuration for 
 running locally.
 
+
+## References
+
+Nicholson Collier, Justin M. Wozniak, Abby Stevens, Yadu Babuji, Mickael Binois, Ardindam Fadikar,
+Alexandra Wurth, Kyle Chard, and Jonathan Ozik. 2023. Developing Distributed High-performance Computing Capabilities of an Open Science Platform for Robust Epidemic Analysis.” To appear in IEEE Workshop on
+Parallel and Distributed Processing for Computational Social Systems (ParSocial) 2023, part of the IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW). https://XXX.

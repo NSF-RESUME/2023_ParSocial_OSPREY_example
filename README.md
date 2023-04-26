@@ -1,6 +1,6 @@
 # Companion Repository for the 2023 OSPREY ParSocial Paper
 
-This repository serves as a companion to the Collier et al. 2023 {CITATION} paper presented at the 2023 ParSocial IPDPS workshop. 
+This repository serves as a companion to the [Collier et al. 2023](LINK) paper presented at the 2023 ParSocial IPDPS workshop. 
 
 Informed by our team's work in supporting public health decision makers during the COVID-19 pandemic and by the identified capability gaps in applying high-performance computing (HPC) to computational epidemiology, the paper  presents the goals, requirements, and initial implementation of OSPREY, an open science platform for robust epidemic analysis. The prototype implementation demonstrates an integrated, algorithm-driven HPC workflow architecture, coordinating tasks across distributed HPC resources, with robust, secure and automated access to each of the resources. The paper demonstrates scalable and fault-tolerant task execution, an asynchronous API to support fast time-to-solution algorithms, an inclusive, multi-language approach, and efficient wide-area data management. This repository provides the example OSPREY code described in the paper.  
 
@@ -9,19 +9,19 @@ Informed by our team's work in supporting public health decision makers during t
 The documentation is structured as follows. We start with a discussion of our workflow toolkit,
 Extreme-scale Model Exploration with Swift (EMEWS), followed by a description of the prototype 
 workflow used in the paper. We then describe the files in this repository, and then provide instructions
-for how workflow can be configured and run.
+for how the workflow can be configured and run.
 
 ## EMEWS
 
 The Extreme-scale Model Exploration with Swift ([EMEWS](https://ieeexplore.ieee.org/document/7822090)) framework enables the direct integration of multi-language model exploration (ME) algorithms while scaling dynamic computational experiments to very large numbers (millions) of models on all major HPC platforms. EMEWS has been designed for any "black box" application code, such as agent-based and microsimulation models or training of machine learning models, that require multiple runs as part of heuristic model explorations. One of the main goals of EMEWS is to democratize the use of large-scale computing resources by making them accessible to more researchers in many more science domains. EMEWS is built on the Swift/T parallel scripting language.
 
 
-EMEWS provides a high-level queue-like interface with several implementations, most notably: EQ/Py and EQ/R (EMEWS Queues for Python and R). These allow an ME (e.g., a model calibration algorithm) to push tasks (e.g., candidate model parameter inputs) to a Swift script which can then return the result of thoe tasks (e.g., model outputs) to the ME. This back-and-forth typicall continues over multiple iterations until the ME reaches some stopping condition. The tasks produced by the ME can be distributed by the Swift/T runtime over very large computer system, but smaller systems that run one model at a time are also supported. The tasks themselves can be implemented as external applications called through the shell, or in-memory libraries accessed directly by Swift (for faster invocation).
+EMEWS provides a high-level queue-like interface with several implementations, most notably: EQ/Py and EQ/R (EMEWS Queues for Python and R). These allow an ME (e.g., a model calibration algorithm) to push tasks (e.g., candidate model parameter inputs) to a Swift script which can then return the result of those tasks (e.g., model outputs) to the ME. This back-and-forth typically continues over multiple iterations until the ME reaches some stopping condition. The tasks produced by the ME can be distributed by the Swift/T runtime over very large computer system, but smaller systems that run one model at a time are also supported. The tasks themselves can be implemented as external applications called through the shell, or in-memory libraries accessed directly by Swift (for faster invocation).
 
 Our current queue implementation, EMEWS Queues in SQL ([EQSQL](https://github.com/emews/EQ-SQL)) builds-on
 our previous work and forms the foundation of the OSPREY prototype workflow. In EQSQL, a SQL database acts as mediator between an ME that submits task to be performed and worker pool(s) that executes them. 
 Submitted tasks are pushed to a database output queue table, and completed tasks to a database input
-queue table. When a task has completed, it can be retrieved by the ME. The ME can also query for that status of a task, asynchronously wait for it's completion, cancel tasks, and so forth. The EQSQL API and its Python implementation is explained in greater detail in OSPREY paper[Collier et al. 2023](LINK). The EMEWS service, as described in the paper, provides remote access to the EQSQL database, and uses the EQSQL API for submitting tasks, retrieving results, and updating task priorities. 
+queue table. When a task has completed, it can be retrieved by the ME. The ME can also query for that status of a task, asynchronously wait for it's completion, cancel tasks, and so forth. The EQSQL API and its Python implementation is explained in greater detail in OSPREY paper [Collier et al. 2023](LINK). The EMEWS service, as described in the paper, provides remote access to the EQSQL database, and uses the EQSQL API for submitting tasks, retrieving results, and updating task priorities. 
 
 ## OSPREY Prototype Workflow
 
@@ -143,15 +143,15 @@ $ ./db-create.sh
 $ ./db-stop.sh
 ```
 
-Once database has been created, it can be stopped and started by sourcing
-your environment file as necessary and then `db-stop.sh` and `db-start.sh`. 
+Once the database has been created, it can be stopped and started by sourcing
+your environment file as necessary and then running `db-stop.sh` and `db-start.sh`, respectively. 
 `db-start.sh` will display the the current DB_PORT etc. values. These
 values are required when configuring the workflow, and the current values
 are written out to a `db-env-vars-TS.txt` file (where TS is a timestamp) each
 time the database is started.
 
-You can print the current contents of the database with `db-print.sh`.`db-reset.sh`
-will delete the contents of the tables.
+You can print the current contents of the database with `db-print.sh`. 
+`db-reset.sh` will delete the contents of the tables.
 
 ### Local Database
 

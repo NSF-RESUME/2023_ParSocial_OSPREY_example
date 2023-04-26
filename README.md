@@ -2,16 +2,28 @@
 
 This repository serves as a companion to the Collier et al. 2023 {CITATION} paper presented at the 2023 ParSocial IPDPS workshop. 
 
-Informed by our team's work in supporting public health decision makers during the COVID-19 pandemic and by the identified capability gaps in applying high-performance computing (HPC) to computational epidemiology, the paper  presents the goals, requirements, and initial implementation of OSPREY, an open science platform for robust epidemic analysis. The prototype implementation demonstrates an integrated, algorithm-driven HPC workflow architecture, coordinating tasks across distributed HPC resources, with robust, secure and automated access to each of the resources. The paper  demonstrates scalable and fault-tolerant task execution, an asynchronous API to support fast time-to-solution algorithms, an inclusive, multi-language approach, and efficient wide-area data management. This repository provides the example OSPREY code described in the paper.  
+Informed by our team's work in supporting public health decision makers during the COVID-19 pandemic and by the identified capability gaps in applying high-performance computing (HPC) to computational epidemiology, the paper  presents the goals, requirements, and initial implementation of OSPREY, an open science platform for robust epidemic analysis. The prototype implementation demonstrates an integrated, algorithm-driven HPC workflow architecture, coordinating tasks across distributed HPC resources, with robust, secure and automated access to each of the resources. The paper demonstrates scalable and fault-tolerant task execution, an asynchronous API to support fast time-to-solution algorithms, an inclusive, multi-language approach, and efficient wide-area data management. This repository provides the example OSPREY code described in the paper.  
 
 ## Overview
 
-The documentation is structured as follows.
+The documentation is structured as follows. We start with a discussion of our workflow toolkit,
+Extreme-scale Model Exploration with Swift (EMEWS), followed by a description of the prototype 
+workflow used in the paper. We then describe the files in this repository, and then provide instructions
+for how workflow can be configured and run.
+
+## EMEWS
+
+The Extreme-scale Model Exploration with Swift ([EMEWS](https://ieeexplore.ieee.org/document/7822090)) framework enables the direct integration of multi-language model exploration (ME) algorithms while scaling dynamic computational experiments to very large numbers (millions) of models on all major HPC platforms. EMEWS has been designed for any "black box" application code, such as agent-based and microsimulation models or training of machine learning models, that require multiple runs as part of heuristic model explorations. One of the main goals of EMEWS is to democratize the use of large-scale computing resources by making them accessible to more researchers in many more science domains. EMEWS is built on the Swift/T parallel scripting language.
 
 
-## Model Exploration Algorithm
+EMEWS provides a high-level queue-like interface with several implementations, most notably: EQ/Py and EQ/R (EMEWS Queues for Python and R). These allow an ME (e.g., a model calibration algorithm) to push tasks (e.g., candidate model parameter inputs) to a Swift script which can then return the result of thoe tasks (e.g., model outputs) to the ME. This back-and-forth typicall continues over multiple iterations until the ME reaches some stopping condition. The tasks produced by the ME can be distributed by the Swift/T runtime over very large computer system, but smaller systems that run one model at a time are also supported. The tasks themselves can be implemented as external applications called through the shell, or in-memory libraries accessed directly by Swift (for faster invocation).
 
-EMEWS workflows {From Desktop CITATION} ...
+Our current queue implementation, EMEWS Queues in SQL ([EQSQL](https://github.com/emews/EQ-SQL)) builds-on
+our previous work and forms the foundation of the OSPREY prototype workflow. In EQSQL, a SQL database acts as mediator between an ME that submits task to be performed and worker pool(s) that executes them. 
+Submitted tasks are pushed to a database output queue table, and completed tasks to a database input
+queue table. When a task has completed, it can be retrieved by the ME. The ME can also query for that status of a task, asynchronously wait for it's completion, cancel tasks, and so forth. The EQSQL API and its Python implementation is explained in greater detail in OSPREY paper[Collier et al. 2023](LINK). The EMEWS service, as described in the paper, provides remote access to the EQSQL database, and uses the EQSQL API for submitting tasks, retrieving results, and updating task priorities. 
+
+## OSPREY Prototype Workflow
 
 Our prototype workflow implements an example optimization workflow
 that attempts to find the minimum of the Ackley function using a 
@@ -23,7 +35,6 @@ a specified number of tasks have completed (i.e., that number of Ackley function
 are available), we train a GPR using the results, and 
 reorder the evaluation of the remaining tasks, increasing the priority of those more
 likely to find an optimal result according to the GPR. This repeats until all the evaluations complete.
-
 
 The model exploration (ME) algorithm is a Python script (`python/run.py`) that begins by initializing
 an initial worker pool and an EMEWS DB. When these are located on a remote resource, a funcX
@@ -53,7 +64,9 @@ down any funcX executors.
 
 ## Files
 
-`python/`:
+The repository consists of the following files:
+
+In the `python` directory:
 
 * `ackley.py` - Python implementation of the Ackley function
 * `lifecycle.py` - Python code for managing worker pools and databases, including a ssh tunnel implementation
@@ -62,24 +75,28 @@ priorities)
 * `task_queues.py` - Task API for working with tasks locally, via the EMEWS RESTful service, and using FuncX.
 * `run.py` - Python workflow implementation.
 
-`swift/`:
+In the `swift` directory:
 
 * `worker_pool_batch.swift` - Swift/T worker pool implementation, pops tasks from the database queue, executes them, and returns the result to the database.
 * `local_worker_pool.sh` - bash script for starting a local worker pool
 * `bebop_worker_pool.sh` - bash script for starting a remote worker pool (e.g., on Argonne's LCRC 
 Bebop cluster)
 
-`swift/ext/`:
+In the `swift/ext`: directory
 
 * `emews.swift` - Utility functions used by the swift worker pools
 * `eq_swift.py` - Python code used by the swift worker pools to interact with the database queues
 * `EQ.swift` - Swift/T funtions for working with task queues using the code in `eq_swift.py`
 
 
-`cfgs/`:
+In the `cfgs` directory:
+
 * `local.cfg` - configuration file for running the local worker pool
 * `test_cfg.yaml` - workflow configuration file, defines the pools, task queues, database properties, etc.
 
+The `db` and `eqsql` directories are part of the EQSQL code and copied here for convience. The `db`
+directory contains various scripts for creating and working with an EQSQL database. The `eqsql` directory
+is a copy of the `esql` python package used by the workflow Python code (task queues, EMEWS service, etc.).
 
 ## Running the Workflow
 
@@ -89,8 +106,113 @@ Resource Center's Bebop HPC cluster at Argonne National Laboratory, and the Argo
 Computing Facility (ALCF) Theta supercomputer. The EMEWS DB components and worker pools were run
 on Bebop, and the GPR training was done on Midway2 or Theta depending on the run configuration.
 
+The workflow has the following external requirements:
+
+1. Swift-t - see the installation section of the Swift-t [User Guide](http://swift-lang.github.io/swift-t/guide.html#_installation) for installation instructions. 
+
+2. A postgresql DB - the `db` directory contains scripts for creating the database schema.
+
+The database code expects the following environment varibles to be set.
+
+* DB_HOST: The database host (e.g., localhost or beboplogin3)
+* DB_PORT: The database port
+* DB_DATA: The database "cluster" directory
+* DB_NAME: The database name (e.g., EQ_SQL)
+* DB_USER: The database user name
+
+The database installation can be of two types: running on an HPC
+login node where it must be manually started, or running locally as system service. For the former,
+if your HPC administrators do not provide a database (e.g., via a `module load`), it can be installed from source. See
+the postgresql [documentation](https://www.postgresql.org/docs/) for more info.
+
+### Login Node Database
+
+Assuming a working postgresql install, the database can be initialized and created using the following
+steps:
+
+Create an environment file (e.g, `my-env.sh`) specifying the DB_HOST, etc. variables for your machine. You can use the nv-example.sh as a template.
+
+```bash
+$ cd db
+$ source my-env.sh
+# Initialize the database "cluster" in DB_DATA
+$ ./db-init.sh
+$ ./db-start.sh
+# Create the EQSQL tables in the databases
+$ ./db-create.sh
+$ ./db-stop.sh
+```
+
+Once database has been created, it can be stopped and started by sourcing
+your environment file as necessary and then `db-stop.sh` and `db-start.sh`. 
+`db-start.sh` will display the the current DB_PORT etc. values. These
+values are required when configuring the workflow, and the current values
+are written out to a `db-env-vars-TS.txt` file (where TS is a timestamp) each
+time the database is started.
+
+You can print the current contents of the database with `db-print.sh`.`db-reset.sh`
+will delete the contents of the tables.
+
+### Local Database
+
+postgres can be installed in a local Linux distribution
+using the distribution's package manager. Assuming postgres is installed
+and running as a system service, the following describes how to
+create an EQSQL DB.
+
+#### Create the database cluster
+
+```bash
+# replace "12" with your postgres major version
+sudo -u postgres pg_createcluster -p 5433 12 eqsql -- --auth-local trust
+sudo systemctl daemon-reload
+```
+
+To start:
+
+```bash
+# replace "12" with your postgres major verion
+sudo systemctl start postgresql@12-eqsql
+```
+
+#### Create db user and eqsql_db
+
+```bash
+sudo -u postgres createuser -p 5433 eqsql_user
+sudo -u postgres createdb -p 5433 eqsql_db
+sudo -u postgres psql
+psql (12.11 (Ubuntu 12.11-0ubuntu0.20.04.1))
+Type "help" for help.
+postgres=# grant all privileges on database eqsql_db to eqsql_user;
+GRANT
+```
+
+#### Create the EQ/SQL tables
+
+```bash
+psql --port=5433 eqsql_db eqsql_user --file db/workflow.sql
+```
+
+You can clear the tables with:
+
+```bash
+psql --port=5433 eqsql_db eqsql_user --file db/erase_tables.sql
+```
+
+If installed using the above instructions, the database will use the following environment variables:
+
+DB_HOST=localhost
+DB_USER=eqsql_user
+DB_NAME=eqsql_db
+DB_PORT=5433
+
+The local database doesn't need to be stopped or started, and assuming the DB_HOST etc.,
+variables have been set, You can print the current contents of the database with `db-print.sh` and `db-reset.sh` will delete the contents of the tables.
+
+### Workflow Configuration
+
 The workflow is configured using a yaml format configuration script. `cfgs/test_cfg.yaml` was used
-to execute the workflow as described in {CITATION}. The configuration file contains both the definitions for worker pools, databases, FuncX endpoints, and proxystore, and task and task queue definitions that use them.
+to execute the workflow as described in {CITATION}. The configuration file contains both the definitions for worker pools, databases, FuncX endpoints, and proxystore, and task and task queue definitions that use them. See the OSPREY [paper](link) for the details on how these components fit together. 
 
 ### Worker Pools Configuration
 
@@ -235,11 +357,17 @@ num_guesses: <total number of tasks to complete>
 retrain_after: <retrain and reprioritize each time this number of tasks complete>
 ```
 
-## Running the Workflow Locally 
+### Running the Workflow Locally 
 
-TODO: a bit more info here
+To run the workflow locally with a local database, and without FuncX, globus, or the emews service:
 
-1. Pull EQSQL repo
-2. Setup DB
-3. Create yaml configuration
-4. python3 run.py <experiment_id> <config.yaml>
+1. Setup up and start the local database as described above
+2. Configure the workflow yaml with a local worker pool using `swift/local_worker_pool.sh` as the `start_pool_script`.
+3. Configure the workflow yaml with a local database
+4. Configure the workflow yaml with a local task_queue that uses the local database
+5. Configure the workflow yaml with a task type 0 that uses the local_pool and local_db
+6. Run with: `python3 python/run.py <exp_id> <path_to_config_file>` where exp_id is some unique experiment id (e.g., `test_1`)
+
+Note `cfgs/local_cfg.yaml` is an example yaml workflow configuration for 
+running locally.
+

@@ -1,0 +1,42 @@
+task_queues:
+  sim:
+    db: local_db
+    type: local
+
+tasks:
+  - type: 0
+    pools: 
+      - local_pool
+    db: local_db
+
+## ME Parameters ##
+
+search_space_size: 750
+sample_dimensions: 4
+runtime: 2
+runtime_var: 1
+num_guesses: 750
+retrain_after: 50
+
+## FX Endpoints, Pool and DB definitions ##
+
+pools:
+  local_pool:
+    type: local
+    start_pool_script: /home/nick/Documents/repos/eqsql_examples/asynch_repriority/swift/local_worker_pool.sh
+    CFG_NODES: 4
+    CFG_PPN: 1
+    CFG_PROCS: $(( CFG_NODES * CFG_PPN ))
+    # CFG_DB_PORT: 5433
+    # CFG_DB_USER: eqsql_test_user
+    # CFG_DB_NAME: eqsql_test_db
+    # CFG_DB_HOST: localhost
+    CFG_BATCH_SIZE: $(( CFG_PROCS - 2 ))
+    CFG_BATCH_THRESHOLD: 1
+dbs:
+  local_db:
+    type: local
+    db_host: localhost
+    db_user: eqsql_test_user
+    db_port: 5433
+    db_name: eqsql_test_db

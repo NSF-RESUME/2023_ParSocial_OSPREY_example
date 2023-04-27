@@ -2,7 +2,12 @@
 
 This repository serves as a companion to the [Collier et al. 2023](#references) paper, presented at the 2023 ParSocial IPDPS workshop. 
 
-Informed by our team's work in supporting public health decision makers during the COVID-19 pandemic and by the identified capability gaps in applying high-performance computing (HPC) to computational epidemiology, the paper  presents the goals, requirements, and initial implementation of OSPREY, an open science platform for robust epidemic analysis. The prototype implementation demonstrates an integrated, algorithm-driven HPC workflow architecture, coordinating tasks across distributed HPC resources, with robust, secure and automated access to each of the resources. The paper demonstrates scalable and fault-tolerant task execution, an asynchronous API to support fast time-to-solution algorithms, an inclusive, multi-language approach, and efficient wide-area data management. This repository provides the example OSPREY code described in the paper.  
+Informed by our team's work in supporting public health decision makers during the COVID-19 pandemic and by the identified capability gaps in applying high-performance computing (HPC) to computational epidemiology, the paper  presents the goals, requirements, and initial implementation of OSPREY, an open science platform for robust epidemic analysis. The prototype implementation demonstrates an integrated, algorithm-driven HPC workflow architecture, coordinating tasks across distributed HPC resources, with robust, secure and automated access to each of the resources. The paper demonstrates scalable and fault-tolerant task execution, an asynchronous API to support fast time-to-solution algorithms, an inclusive, multi-language approach, and efficient wide-area data management. This repository provides the example OSPREY code described in the paper.
+
+Note that in the following we refer to the Python FuncX package. As of April 19th 2023, FuncX has been
+added to the Globus platflorm as Globus Compute. See this [post](https://funcx.org/globus-compute.html),
+and the Globus Compute [documentation](https://globus-compute.readthedocs.io/en/latest/) for more
+information.
 
 ## Overview
 
@@ -37,7 +42,7 @@ reorder the evaluation of the remaining tasks, increasing the priority of those 
 likely to find an optimal result according to the GPR. This repeats until all the evaluations complete.
 
 The model exploration (ME) algorithm is a Python script (`python/run.py`) that begins by initializing
-an initial worker pool and an EMEWS DB. When these are located on a remote resource, a funcX
+an initial worker pool and an EMEWS DB. When these are located on a remote resource, a FuncX
 client, and the EMEWS service, which mediates between the remote DB and the local model exploration
 algorithm, and an SSH tunnel through which we communicate
 with the EMEWS service are started. After initializing, we create an initial sample set of 750 4-dimensional points, which
@@ -52,7 +57,7 @@ popped off the list of futures returned by the submission using the `as_complete
 
 The reprioritization consists of retraining the GPR with the completed results and then updating the
 evaluation priorities of the uncompleted tasks using the GPR predictions. The retraining of the GPR
-can be performed remotely using funcX or locally as part of the ME script and returns the updated evaluation order. When run remotely, the GPR itself was passed as a ProxyStore proxy
+can be performed remotely using FuncX or locally as part of the ME script and returns the updated evaluation order. When run remotely, the GPR itself was passed as a ProxyStore proxy
 object, using ProxyStore's Globus functionality, to the reprioritization function and resolved into the actual GPR during remote function evaluation.
 Using the updated order returned from the function, the uncompleted tasks are reprioritized using the
 `update_priorities` API function (`python/task_queues.py`). The reprioritization repeats for every new 50 completed tasks, and start an additional worker pool after the 2nd and 4th
@@ -60,7 +65,7 @@ reprioritizations, for a final total of 3 worker pools. Connecting to the same d
 the same type of work, popping
 tasks off the same output queue, and executing the Ackley function (`python/ackley.py`) using those tasks' payload.
 When there are no more tasks left to complete, the workflow terminates, stopping the database, and shutting
-down any funcX executors.
+down any FuncX executors.
 
 ## Files
 
@@ -271,7 +276,8 @@ the `db_data` value.
 
 ### FuncX Endpoint Configuration
 
-FuncX endpoints are defined in the `fx_endpoints` entry. See the FuncX [Documentation](https://funcx.readthedocs.io/en/latest/) for more information on how to setup and define your own endpoints.
+FuncX endpoints are defined in the `fx_endpoints` entry. See the FuncX [Documentation](https://funcx.readthedocs.io/en/latest/) for more information on how to setup and define your own endpoints. As of April 19th 2023, FuncX has been added to the Globus platflorm as Globus Compute. See this [post](https://funcx.org/globus-compute.html), and the Globus Compute [documentation](https://globus-compute.readthedocs.io/en/latest/) for more information.
+
 
 ```yaml
 fx_endpoints:

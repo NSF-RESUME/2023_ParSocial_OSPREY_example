@@ -21,7 +21,7 @@ EMEWS provides a high-level queue-like interface with several implementations, m
 Our current queue implementation, EMEWS Queues in SQL ([EQSQL](https://github.com/emews/EQ-SQL)) builds-on
 our previous work and forms the foundation of the OSPREY prototype workflow. In EQSQL, a SQL database acts as mediator between an ME that submits task to be performed and worker pool(s) that executes them. 
 Submitted tasks are pushed to a database output queue table, and completed tasks to a database input
-queue table. When a task has completed, it can be retrieved by the ME. The ME can also query for that status of a task, asynchronously wait for it's completion, cancel tasks, and so forth. The EQSQL API and its Python implementation is explained in greater detail in OSPREY paper [Collier et al. 2023](LINK). The EMEWS service, as described in the paper, provides remote access to the EQSQL database, and uses the EQSQL API for submitting tasks, retrieving results, and updating task priorities. 
+queue table. When a task has completed, it can be retrieved by the ME. The ME can also query for that status of a task, asynchronously wait for it's completion, cancel tasks, and so forth. The EQSQL API and its Python implementation is explained in greater detail in OSPREY paper [Collier et al. 2023](#references). The EMEWS service, as described in the paper, provides remote access to the EQSQL database, and uses the EQSQL API for submitting tasks, retrieving results, and updating task priorities. 
 
 ## OSPREY Prototype Workflow
 
@@ -216,7 +216,9 @@ variables have been set, You can print the current contents of the database with
 ### Workflow Configuration
 
 The workflow is configured using a yaml format configuration script. `cfgs/test_cfg.yaml` was used
-to execute the workflow as described in {CITATION}. The configuration file contains both the definitions for worker pools, databases, FuncX endpoints, and proxystore, and task and task queue definitions that use them. See the OSPREY [paper](link) for the details on how these components fit together. 
+to execute the workflow as described in the OSPREY [paper](#references). (This
+repository also contains `cfgs/local_cfg.yaml`, an example yaml workflow configuration for 
+running the workflow locally.) The configuration file contains both the definitions for worker pools, databases, FuncX endpoints, and proxystore, and task and task queue definitions that use them. See the OSPREY [paper](#references) for the details on how these components fit together. 
 
 ### Worker Pools Configuration
 
@@ -378,6 +380,6 @@ running locally.
 
 ## References
 
-Nicholson Collier, Justin M. Wozniak, Abby Stevens, Yadu Babuji, Mickael Binois, Ardindam Fadikar,
-Alexandra Wurth, Kyle Chard, and Jonathan Ozik. 2023. Developing Distributed High-performance Computing Capabilities of an Open Science Platform for Robust Epidemic Analysis.” To appear in IEEE Workshop on
+Nicholson Collier, Justin M. Wozniak, Abby Stevens, Yadu Babuji, Mickaël Binois, Ardindam Fadikar,
+Alexandra Würth, Kyle Chard, and Jonathan Ozik. 2023. Developing Distributed High-performance Computing Capabilities of an Open Science Platform for Robust Epidemic Analysis.” To appear in IEEE Workshop on
 Parallel and Distributed Processing for Computational Social Systems (ParSocial) 2023, part of the IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW). https://XXX.

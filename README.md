@@ -388,4 +388,4 @@ running locally.
 
 Nicholson Collier, Justin M. Wozniak, Abby Stevens, Yadu Babuji, Mickaël Binois, Ardindam Fadikar,
 Alexandra Würth, Kyle Chard, and Jonathan Ozik. 2023. Developing Distributed High-performance Computing Capabilities of an Open Science Platform for Robust Epidemic Analysis.” To appear in IEEE Workshop on
-Parallel and Distributed Processing for Computational Social Systems (ParSocial) 2023, part of the IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW). https://XXX.
+Parallel and Distributed Processing for Computational Social Systems (ParSocial) 2023, part of the IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW). [https://doi.org/10.48550/arXiv.2304.14244](https://doi.org/10.48550/arXiv.2304.14244).
